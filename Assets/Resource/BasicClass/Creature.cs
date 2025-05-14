@@ -25,8 +25,9 @@ public class Creature : MonoBehaviour
     public GM_Creature GM_Creature;
     public GM_Global GM_Global;
     public GM_Level GM_Level;
-    public TMP_Text MyPlan;
-    public string MyPlanName;
+
+    //---------------------
+    public string MyPlan;
 
     void Start()
     {
@@ -52,11 +53,7 @@ public class Creature : MonoBehaviour
 
     public virtual void Update()
     {
-        if (this.InGameID > 0 && this.InGameID <= 6)
-        {
-            MyPlanName = "InGameID" + $"{this.InGameID}" + "Plan";
-            MyPlan = GameObject.Find(nameof(MyPlanName)).GetComponent<TMP_Text>();
-        }
+
 
     }
 
@@ -74,7 +71,7 @@ public class Creature : MonoBehaviour
         if (GM_Creature != null)
         {
             GM_Creature.OnTargetCheck -= HandleTargetCheck;
-            MyPlan.text = "  ";
+
         }
     }
 

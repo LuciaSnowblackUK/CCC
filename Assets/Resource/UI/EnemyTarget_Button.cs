@@ -6,13 +6,16 @@ using UnityEngine.EventSystems;
 using Unity.VisualScripting;
 
 [RequireComponent(typeof(Button))]
-public class EnemyTarget_Button : MonoBehaviour
+public class EnemyTarget_Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public GM_Card GM_Card;
     public GM_Creature GM_Creature;
     public GM_Global GM_Global;
     public GM_Level GM_Level;
     public GameObject Enemy;
+
+    public TMP_Text Detail_Text;  // 你想改变的文本
+    public Creature Enemyitself;
 
     void Start()
     {
@@ -21,6 +24,10 @@ public class EnemyTarget_Button : MonoBehaviour
         GM_Global = GameObject.Find(nameof(GM_Global)).GetComponent<GM_Global>();
         GM_Level = GameObject.Find(nameof(GM_Level)).GetComponent<GM_Level>();
         Enemy = transform.parent.gameObject;
+        Enemyitself = Enemy.GetComponent<Creature>();
+
+        if (Detail_Text == null)
+            Detail_Text = GameObject.Find("Detail_Text").GetComponent<TMP_Text>();
 
         // 可选：报错检查
         if (GM_Card == null) Debug.LogError("GM_Card not found or missing component.");
@@ -54,5 +61,13 @@ public class EnemyTarget_Button : MonoBehaviour
         // {留白}：在这里添加你需要执行的具体操作
     }
 
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        Detail_Text.text = Enemyitself.MyPlan;
+    }
 
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        Detail_Text.text = " ---";
+    }
 }

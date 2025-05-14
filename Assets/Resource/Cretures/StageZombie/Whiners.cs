@@ -25,50 +25,39 @@ public class Whiners : Creature
     public override void Update()
     {
 
-        // Write its plan on text
-        if (this.InGameID > 0 && this.InGameID < 6)
+        switch (CurrentAction)
         {
-            MyPlanName = "InGameID" + $"{this.InGameID}" + "Plan";
-            MyPlan = GameObject.Find(nameof(MyPlanName)).GetComponent<TMP_Text>();
+            case 0:
+                MyPlan = $"Enemy{this.InGameID}_Whiners:[Do nothing]";
+                CurrentStat = 0;
+                break;
 
-            switch (CurrentAction)
-            {
-                case 0:
-                    MyPlan.text = $"Enemy{this.InGameID}:[Do nothing]";
-                    CurrentStat = 0;
-                    break;
+            case 1:
+                MyPlan = $"Enemy{this.InGameID}_Whiners:[Shout and Bite]:Deal 10 Kinetic Damage to Player";
+                CurrentStat = 1;
+                break;
 
-                case 1:
-                    MyPlan.text = $"Enemy{this.InGameID}:[Shout and Bite]:Deal 10 Kinetic Damage to Player";
-                    CurrentStat = 1;
-                    break;
+            case 2:
+                MyPlan = $"Enemy{this.InGameID}_Whiners:[Rapid Bite]:Deal 20 Kinetic Damage to Player";
+                CurrentStat = 1;
+                break;
 
-                case 2:
-                    MyPlan.text = $"Enemy{this.InGameID}:[Rapid Bite]:Deal 20 Kinetic Damage to Player";
-                    CurrentStat = 1;
-                    break;
+            case 3:
+                MyPlan = $"Enemy{this.InGameID}_Whiners:[Hold You]:Add 2 [Surrounded] card to Hand!";
+                CurrentStat = 3;
+                break;
 
-                case 3:
-                    MyPlan.text = $"Enemy{this.InGameID}:[Hold You]:Add 2 [Surrounded] card to Hand!";
-                    CurrentStat = 3;
-                    break;
+            case 4:
+                MyPlan = $"Enemy{this.InGameID}_Whiners:[Surround You]:loss 200 HP, and spawn a 200 HP Whiners";
+                CurrentStat = 3;
+                break;
 
-                case 4:
-                    MyPlan.text = $"Enemy{this.InGameID}:[Surround You]:loss 200 HP, and spawn a 200 HP Whiners";
-                    CurrentStat = 3;
-                    break;
-
-                case 5:
-                    MyPlan.text = $"Enemy{this.InGameID}:[Reinforcing]:Heal itself 200 HP";
-                    CurrentStat = 3;
-                    break;
-            }
+            case 5:
+                MyPlan = $"Enemy{this.InGameID}_Whiners:[Reinforcing]:Heal itself 200 HP";
+                CurrentStat = 3;
+                break;
         }
-
-        // Show its stat by UI
-
-
-
+        
 
     }
 

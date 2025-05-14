@@ -46,46 +46,35 @@ public class Zombie_ShieldBoss : Creature
     public override void Update()
     {
 
-        // Write its plan on text
-        if (this.InGameID > 0 && this.InGameID < 6)
-        {
-            MyPlanName = "InGameID" + $"{this.InGameID}" + "Plan";
-            MyPlan = GameObject.Find(nameof(MyPlanName)).GetComponent<TMP_Text>();
 
             switch (CurrentAction)
             {
                 case 0:
-                    MyPlan.text = $"Enemy{this.InGameID}:[Do nothing]";
+                    MyPlan = $"Enemy{this.InGameID}_Zombie_ShieldBoss:[Do nothing]";
                     CurrentStat = 0;
                     break;
 
                 case 1:
-                    MyPlan.text = $"Enemy{this.InGameID}:[Shoot]:Deal 10 ion Damage to Player";
+                    MyPlan = $"Enemy{this.InGameID}_Zombie_ShieldBoss:[Shoot]:Deal 10 ion Damage to Player";
                     CurrentStat = 1;
                     break;
 
                 case 2:
-                    MyPlan.text = $"Enemy{this.InGameID}:[Command: Surround]:(Enemy{this.TargetEnemyInGameID}):it does [Surround]";
+                    MyPlan = $"Enemy{this.InGameID}_Zombie_ShieldBoss:[Command: Surround]:(Enemy{this.TargetEnemyInGameID}):it does [Surround]";
                     CurrentStat = 3;
                     break;
 
                 case 3:
-                    MyPlan.text = $"Enemy{this.InGameID}:[Command: Rapid Bite]:(Enemy{this.TargetEnemyInGameID}):it does [Rapid Bite]";
+                    MyPlan = $"Enemy{this.InGameID}_Zombie_ShieldBoss:[Command: Rapid Bite]:(Enemy{this.TargetEnemyInGameID}):it does [Rapid Bite]";
                     CurrentStat = 3;
                     break;
 
                 case 4:
-                    MyPlan.text = $"Enemy{this.InGameID}:[Command: Reinforcing]:(Enemy{this.TargetEnemyInGameID}):it does [Reinforcing]";
+                    MyPlan = $"Enemy{this.InGameID}_Zombie_ShieldBoss:[Command: Reinforcing]:(Enemy{this.TargetEnemyInGameID}):it does [Reinforcing]";
                     CurrentStat = 3;
                     break;
 
             }
-        }
-
-        // Show its stat by UI
-
-
-
 
     }
 

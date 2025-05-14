@@ -36,6 +36,8 @@ public class Ammo_Box : Card
         bool C4 = await GM_Card.Discard(Card4, true);
         GameObject Card5 = await TargetingHelper.WaitForTargetWithComponentAsync<Card>(PlayerState.ChoosingCardOptional, GM_Global);
         bool C5 = await GM_Card.Discard(Card5, true);
+        GameObject Card6 = await TargetingHelper.WaitForTargetWithComponentAsync<Card>(PlayerState.ChoosingCardOptional, GM_Global);
+        bool C6 = await GM_Card.Discard(Card5, true);
 
 
 

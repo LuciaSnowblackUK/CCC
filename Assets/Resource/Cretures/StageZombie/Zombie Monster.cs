@@ -45,49 +45,38 @@ public class Zombie_Monster : Creature
     public override void Update()
     {
 
-        // Write its plan on text
-        if (this.InGameID > 0 && this.InGameID < 6)
-        {
-            MyPlanName = "InGameID" + $"{this.InGameID}" + "Plan";
-            MyPlan = GameObject.Find(nameof(MyPlanName)).GetComponent<TMP_Text>();
-
             switch (CurrentAction)
             {
                 case 0:
-                    MyPlan.text = $"Enemy{this.InGameID}:[Do nothing]";
+                    MyPlan = $"Enemy{this.InGameID}_Zombie_Monster:[Do nothing]";
                     CurrentStat = 0;
                     break;
 
                 case 1:
-                    MyPlan.text = $"Enemy{this.InGameID}:[Charge1]:heal itself to 100，This enemy selfstun 30";
+                    MyPlan = $"Enemy{this.InGameID}_Zombie_Monster:[Charge1]:heal itself to 100，This enemy selfstun 30";
                     CurrentStat = 3;
                     break;
 
                 case 2:
-                    MyPlan.text = $"Enemy{this.InGameID}:[Charge2]:heal itself to 300，This enemy selfstun 30";
+                    MyPlan = $"Enemy{this.InGameID}_Zombie_Monster:[Charge2]:heal itself to 300，This enemy selfstun 30";
                     CurrentStat = 3;
                     break;
 
                 case 3:
-                    MyPlan.text = $"Enemy{this.InGameID}:[Virus Spewing]:deals 30 kinetic damage to Player";
+                    MyPlan = $"Enemy{this.InGameID}_Zombie_Monster:[Virus Spewing]:deals 30 kinetic damage to Player";
                     CurrentStat = 1;
                     break;
 
                 case 4:
-                    MyPlan.text = $"Enemy{this.InGameID}:[Summon Horde]:loss 200 HP, and spawn a 200 HP Whiners";
+                    MyPlan = $"Enemy{this.InGameID}_Zombie_Monster:[Summon Horde]:loss 200 HP, and spawn a 200 HP Whiners";
                     CurrentStat = 3;
                     break;
 
                 case 5:
-                    MyPlan.text = $"Enemy{this.InGameID}:[Ram]:loss 100 HP and deal 100 kinetic damage to Player.";
+                    MyPlan = $"Enemy{this.InGameID}_Zombie_Monster:[Ram]:loss 100 HP and deal 100 kinetic damage to Player.";
                     CurrentStat = 1;
                     break;
             }
-        }
-
-        // Show its stat by UI
-
-
 
 
     }

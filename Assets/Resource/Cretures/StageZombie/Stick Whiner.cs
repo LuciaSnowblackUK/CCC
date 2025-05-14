@@ -32,43 +32,35 @@ public class Stick_Whiner : Creature
     public override void Update()
     {
 
-        // Write its plan on text
-        if (this.InGameID > 0 && this.InGameID < 6)
-        {
-            MyPlanName = "InGameID" + $"{this.InGameID}" + "Plan";
-            MyPlan = GameObject.Find(nameof(MyPlanName)).GetComponent<TMP_Text>();
 
             switch (CurrentAction)
             {
                 case 0:
-                    MyPlan.text = $"Enemy{this.InGameID}:[Do nothing]";
+                    MyPlan = $"Enemy{this.InGameID}_Stick_Whiner:[Do nothing]";
                     CurrentStat = 0;
                     break;
 
                 case 1:
-                    MyPlan.text = $"Enemy{this.InGameID}:[Stick Hit]:Deal 10 Kinetic Damage to Player";
+                    MyPlan = $"Enemy{this.InGameID}_Stick_Whiner:[Stick Hit]:Deal 10 Kinetic Damage to Player";
                     CurrentStat = 1;
                     break;
 
                 case 2:
-                    MyPlan.text = $"Enemy{this.InGameID}:[Raise the Stick]";
+                    MyPlan = $"Enemy{this.InGameID}_Stick_Whiner:[Raise the Stick]";
                     CurrentStat = 1;
                     break;
 
                 case 3:
-                    MyPlan.text = $"Enemy{this.InGameID}:[Heavy Smash]:Deal 50 Kinetic Damage to Player!";
+                    MyPlan = $"Enemy{this.InGameID}_Stick_Whiner:[Heavy Smash]:Deal 50 Kinetic Damage to Player!";
                     CurrentStat = 1;
                     break;
 
                 case 4:
-                    MyPlan.text = $"Enemy{this.InGameID}:[Defend]:Become Armored for 1 turn";
+                    MyPlan = $"Enemy{this.InGameID}_Stick_Whiner:[Defend]:Become Armored for 1 turn";
                     CurrentStat = 2;
                     break;
             }
-        }
-
-        // Show its stat by UI
-
+        
 
 
 

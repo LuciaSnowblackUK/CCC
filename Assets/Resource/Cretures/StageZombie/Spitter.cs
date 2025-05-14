@@ -43,42 +43,36 @@ public class Spitter : Creature
     public override void Update()
     {
 
-        // Write its plan on text
-        if (this.InGameID > 0 && this.InGameID < 6)
+
+
+        switch (CurrentAction)
         {
-            MyPlanName = "InGameID" + $"{this.InGameID}" + "Plan";
-            MyPlan = GameObject.Find(nameof(MyPlanName)).GetComponent<TMP_Text>();
+            case 0:
+                MyPlan = $"Enemy{this.InGameID}_Spitter:[Do nothing]";
+                CurrentStat = 0;
+                break;
 
-            switch (CurrentAction)
-            {
-                case 0:
-                    MyPlan.text = $"Enemy{this.InGameID}:[Do nothing]";
-                    CurrentStat = 0;
-                    break;
+            case 1:
+                MyPlan = $"Enemy{this.InGameID}_Spitter:[Spit Acid]:Deal 10 ion Damage to Player, make you H 1 turn";
+                CurrentStat = 1;
+                break;
 
-                case 1:
-                    MyPlan.text = $"Enemy{this.InGameID}:[Spit Acid]:Deal 10 ion Damage to Player, make you H 1 turn";
-                    CurrentStat = 1;
-                    break;
+            case 2:
+                MyPlan = $"Enemy{this.InGameID}_Spitter:[Regenerative Virus]:(Enemy{this.TargetEnemyInGameID}):Heal 100 it if HP lower than 200";
+                CurrentStat = 3;
+                break;
 
-                case 2:
-                    MyPlan.text = $"Enemy{this.InGameID}:[Regenerative Virus]:(Enemy{this.TargetEnemyInGameID}):Heal 100 it if HP lower than 200";
-                    CurrentStat = 3;
-                    break;
+            case 3:
+                MyPlan = $"Enemy{this.InGameID}_Spitter:Harden Virus]:(Enemy{this.TargetEnemyInGameID}):it become A for 1 turn";
+                CurrentStat = 3;
+                break;
 
-                case 3:
-                    MyPlan.text = $"Enemy{this.InGameID}:Harden Virus]:(Enemy{this.TargetEnemyInGameID}):it become A for 1 turn";
-                    CurrentStat = 3;
-                    break;
+            case 4:
+                MyPlan = $"Enemy{this.InGameID}_Spitter:[Rest]:Do nothing";
+                CurrentStat = 0;
+                break;
 
-                case 4:
-                    MyPlan.text = $"Enemy{this.InGameID}:[Rest]:Do nothing";
-                    CurrentStat = 0;
-                    break;
-
-            }
         }
-
         // Show its stat by UI
 
 
