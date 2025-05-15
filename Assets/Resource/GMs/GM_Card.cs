@@ -43,6 +43,12 @@ public class GM_Card : MonoBehaviour
     //Draw: Move n cards from deck to hand
     public async Task<bool> Draw(int number, bool IfTrigger)
     {
+
+        if (ReturnHandCard().Count >= 10)
+        {
+            return false;
+        }
+
         for (int i = 0; i < number; i++)
         {
             Deck.UpdateCards();
@@ -91,6 +97,11 @@ public class GM_Card : MonoBehaviour
     public async Task<bool> DrawCardWithTag(string tag, string where, bool ifTrigger)
     {
         List<GameObject> sourceList;
+
+        if (ReturnHandCard().Count >= 10)
+        {
+            return false;
+        }
 
         // 选择来源列表
         if (where == "Deck")
@@ -221,6 +232,11 @@ public class GM_Card : MonoBehaviour
     //Add: Generate a card and put it Where [Deck,Hand,DiscardPile], and direction [Top:true,Bottom:false]
     public async Task<bool> Add(int CardID, string Pack, string Where, bool Direction)
     {
+        if (ReturnHandCard().Count >= 10)
+        {
+            return false;
+        }
+
 
         // 拼接路径时要注意加上 "/"
         GameObject[] spawnList = Resources.LoadAll<GameObject>("Cards/" + Pack);
