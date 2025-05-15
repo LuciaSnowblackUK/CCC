@@ -20,7 +20,7 @@ public class Ammo_Box : Card
 
         //Not longer a hand card when played
         GM_Card.ReturnHandCard().Remove(this.gameObject);
-        transform.SetParent(null);
+        transform.SetParent(null); transform.position = new Vector3(100f, 100f, transform.position.z);
 
 
         //---------------------------------------------------------------------------------------------------------------

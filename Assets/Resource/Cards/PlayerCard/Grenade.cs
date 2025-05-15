@@ -29,7 +29,7 @@ public class Grenade : Card
 
         //Targeting and Discard those card
         GameObject Card1 = await TargetingHelper.WaitForTargetWithComponentAsync<Card>(PlayerState.ChoosingCardOptional, GM_Global);
-        bool C1 = await GM_Card.Discard(Card1, true);
+        bool C1 = await GM_Card.Discard(Card1, true); transform.position = new Vector3(100f, 100f, transform.position.z);
 
 
 

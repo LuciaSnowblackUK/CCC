@@ -25,7 +25,7 @@ public class Run_and_Gun : Card
         GM_Global.CurrentPlayerState = PlayerState.Idle;
         //Not longer a hand card when played
         GM_Card.ReturnHandCard().Remove(this.gameObject);
-        transform.SetParent(null);
+        transform.SetParent(null); transform.position = new Vector3(100f, 100f, transform.position.z);
         //---------------------------------------------------------------------------------------------------------------
         //Targeting and Discard those card
         GameObject Card1 = await TargetingHelper.WaitForTargetWithComponentAsync<Card>(PlayerState.ChoosingCardOptional, GM_Global);

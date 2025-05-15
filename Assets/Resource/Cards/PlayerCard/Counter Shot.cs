@@ -21,7 +21,7 @@ public class Counter_Shot : Card
     public override async Task<bool> WhenPlayed()
     {
         GM_Global.CurrentPlayerState = PlayerState.Idle;
-        transform.SetParent(null);
+        transform.SetParent(null); transform.position = new Vector3(100f, 100f, transform.position.z);
         //Not longer a hand card when played
         GM_Card.ReturnHandCard().Remove(this.gameObject);
 

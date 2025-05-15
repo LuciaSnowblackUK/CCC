@@ -258,6 +258,11 @@ public class GM_Creature : MonoBehaviour
     //Method: To Spawn a Creature by ID, and grants it NewCreatureID, VERY IMPORTANT YOU HAVE TO KNOW WHAT STAGE THE CREATURE BELONGS TO
     public bool Spawn(int HP, int MonsterID, string Stage)
     {
+        if (NewInGameID >= 6)
+        {
+            return false; // cant have more than 6 enemies
+        }
+
         // 拼接路径时要注意加上 "/"
         GameObject[] spawnList = Resources.LoadAll<GameObject>("Creatures/" + Stage);
 

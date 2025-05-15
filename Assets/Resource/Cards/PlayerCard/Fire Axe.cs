@@ -25,7 +25,7 @@ public class Fire_Axe : Card
 
         //Not longer a hand card when played
         GM_Card.ReturnHandCard().Remove(this.gameObject);
-        transform.SetParent(null);
+        transform.SetParent(null); transform.position = new Vector3(100f, 100f, transform.position.z);
 
         //---------------------------------------------------------------------------------------------------------------
         //the effect of this card: Discard a Card from your hand,Deal 20 Explosive damage 20 stun to target enemy,add 2[Combo] card into your hand
