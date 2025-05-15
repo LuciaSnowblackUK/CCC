@@ -52,7 +52,7 @@ public class Skip_Button : MonoBehaviour
 
     public void OnButtonClick()
     {
-        if (GM_Global.CurrentPlayerState == PlayerState.ChoosingEnemy || GM_Global.CurrentPlayerState == PlayerState.ChoosingCardOptional)
+        if (GM_Global.CurrentPlayerState == PlayerState.ChoosingEnemy || GM_Global.CurrentPlayerState == PlayerState.ChoosingCardOptional )
         {
             // 在这里填写你想执行的逻辑
             Debug.Log("This Selection Skiped");

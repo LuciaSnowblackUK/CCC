@@ -28,11 +28,22 @@ public class Wall_hammer : Card
         transform.SetParent(null);
         //---------------------------------------------------------------------------------------------------------------
 
-        //To Choose a Card1 and Discard it--------------------------------------------------------------------------------------------------------------------------]
-        GameObject Card1 = await TargetingHelper.WaitForTargetWithComponentAsync<Card>(PlayerState.ChoosingCardOptional, GM_Global);
-        bool C1 = await GM_Card.Discard(Card1, true);
-        GameObject Card2 = await TargetingHelper.WaitForTargetWithComponentAsync<Card>(PlayerState.ChoosingCardOptional, GM_Global);
-        bool C2 = await GM_Card.Discard(Card2, true);
+        //To Choose Cards and Discard them--------------------------------------------------------------------------------------------------------------------------]
+        GameObject Card1 = null;
+        bool C1 = false;
+        GameObject Card2 = null;
+        bool C2 = false;
+
+        if (GM_Card.ReturnHandCard().Count != 0)
+        {
+            Card1 = await TargetingHelper.WaitForTargetWithComponentAsync<Card>(PlayerState.ChoosingCard, GM_Global);
+            C1 = await GM_Card.Discard(Card1, true);
+            Card2 = await TargetingHelper.WaitForTargetWithComponentAsync<Card>(PlayerState.ChoosingCard, GM_Global);
+            C2 = await GM_Card.Discard(Card2, true);
+        }
+
+
+
 
 
         // deal with cards

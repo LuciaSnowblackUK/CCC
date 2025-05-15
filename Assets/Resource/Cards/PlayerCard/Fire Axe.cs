@@ -31,8 +31,15 @@ public class Fire_Axe : Card
         //the effect of this card: Discard a Card from your hand,Deal 20 Explosive damage 20 stun to target enemy,add 2[Combo] card into your hand
 
         //Targeting and Discard those card
-        GameObject Card1 = await TargetingHelper.WaitForTargetWithComponentAsync<Card>(PlayerState.ChoosingCard, GM_Global);
-        bool C1 = await GM_Card.Discard(Card1, true);
+        bool C1 = false;
+        GameObject Card1 = null;
+
+        if (GM_Card.ReturnHandCard().Count != 0)
+        {
+            Card1 = await TargetingHelper.WaitForTargetWithComponentAsync<Card>(PlayerState.ChoosingCard, GM_Global);
+            C1 = await GM_Card.Discard(Card1, true);
+        }
+
 
         // 玩家选择敌人（通过静态方法等待选择）
         GameObject Target = await TargetingHelper.WaitForTargetWithComponentAsync<Creature>(PlayerState.ChoosingEnemy, GM_Global);

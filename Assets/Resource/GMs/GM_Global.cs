@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using UnityEditor.Sprites;
 using System.Threading.Tasks;
+using TMPro;
 
 public class GM_Global : MonoBehaviour
 {
@@ -18,11 +19,15 @@ public class GM_Global : MonoBehaviour
     public GM_Creature GM_Creature;
     public GM_Level GM_Level;
 
+    public TMP_Text Hint_Text;
+
     void Start()
     {
         GM_Card = GameObject.Find(nameof(GM_Card)).GetComponent<GM_Card>();
         GM_Creature = GameObject.Find(nameof(GM_Creature)).GetComponent<GM_Creature>();
         GM_Level = GameObject.Find(nameof(GM_Level)).GetComponent<GM_Level>();
+
+        Hint_Text = GameObject.Find(nameof(Hint_Text)).GetComponent<TMP_Text>();
 
         // 可选：报错检查
         if (GM_Card == null) Debug.LogError("GM_Card not found or missing component.");
@@ -30,7 +35,39 @@ public class GM_Global : MonoBehaviour
         if (GM_Level == null) Debug.LogError("GM_Level not found or missing component.");
     }
 
+    private void Update()
+    {
+        switch (CurrentPlayerState)
+        {
+            case PlayerState.Idle:
 
+                Hint_Text.text = ("Please Wait");
+                break;
+
+            case PlayerState.PlayingCard:
+
+                Hint_Text.text = ("You may play a card or click endturn");
+                break;
+
+            case PlayerState.ChoosingCardOptional:
+
+                Hint_Text.text = ("Please Choose a card, you may click X button to skip");
+                break;
+
+            case PlayerState.ChoosingCard:
+                Hint_Text.text = ("Please Choose a card, can not skip");
+
+                break;
+
+            case PlayerState.ChoosingEnemy:
+                Hint_Text.text = ("Please Choose a Enemy, you may click X button to skip");
+
+                // 高亮敌人，等待点击
+                break;
+
+        }
+
+    }
 
     //End Turn, This method 
     public async Task EndTurn()
