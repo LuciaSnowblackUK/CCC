@@ -15,7 +15,8 @@ public class Kill_Shot : Card
     public override string CardDiscription { get; set; } =
 @"<Kill Shot>
 
-Discard up to 2 cards from your hand, if at least  1 <Ammo>tag card is discarded, deal 100 Kinetic Damage to target enemy
+Discard up to 2 cards from your hand, 
+if at least 1 <Ammo>tag card is discarded, deal 100 Kinetic Damage to target enemy
 
 
 <Tag:Shooting>";

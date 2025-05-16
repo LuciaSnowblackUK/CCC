@@ -18,7 +18,8 @@ public class Grenade : Card
 Discard another card from your hand
 
 When Shuffle: 
-deal 20 Explosive Damage to each enemy and stun them 100
+deal 20 Explosive Damage to each enemy and stun them 10,
+
 
 
 <Tag:Ammo>";
@@ -65,8 +66,8 @@ deal 20 Explosive Damage to each enemy and stun them 100
         {
             if (GM_Creature.UpdateCreature()[InGameID].InGameID != 0) //InGameID = 0 means player, this is a AOE effect for enemies
             {
-                GM_Creature.Damage(InGameID, "E", 100);
-                GM_Creature.Stun(InGameID, 20);
+                GM_Creature.Damage(InGameID, "E", 20);
+                GM_Creature.Stun(InGameID, 10);
             }
 
         }

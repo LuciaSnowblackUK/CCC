@@ -17,8 +17,8 @@ public class RPG : Card
 Can not be Played
 
 When Shuffle: 
-Deal 100 Kinetic damage to both you and target enemy,
-Deal 100 stun to the same target enemy
+Deal 100 Explosive damage to target and stun it 100.
+Deal 100 Kinetic damage to yourself.
 
 <Tag:Ammo>";
 
@@ -47,11 +47,11 @@ Deal 100 stun to the same target enemy
             int TargetInGameID = TargetCreature.InGameID;
 
             // damage
-            GM_Creature.Damage(0, "K", 100);
-            GM_Creature.Damage(TargetInGameID, "K", 100);
+            GM_Creature.Damage(TargetInGameID, "E", 100);
             GM_Creature.Stun(TargetInGameID, 100);
         }
 
+        GM_Creature.Damage(0, "K", 100);
         return false;
     }
 

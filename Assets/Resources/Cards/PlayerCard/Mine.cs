@@ -15,7 +15,7 @@ public class Mine : Card
 Can not be Played
 
 When Shuffle: 
-Destroy each enemy if it is not going to defend,
+Destroy each enemy if it is going to Attack,
 if you have less than 8 cards in your hand: destroy this card
 
 <Tag:Ammo>";
@@ -51,7 +51,7 @@ if you have less than 8 cards in your hand: destroy this card
         // 遍历这些 Creature 对象
         foreach (var creature in selectedCreatures)
         {
-            if (creature.CurrentStat != 2)
+            if (creature.CurrentStat == 1)
             {
                 creature.HP = 0;
                 GM_Creature.Damage(creature.InGameID, "V", 1);
