@@ -38,7 +38,7 @@ public class Card : MonoBehaviour
     }
 
 
-
+    public virtual string CardDiscription { get; set; } = "-------------";
 
 
 

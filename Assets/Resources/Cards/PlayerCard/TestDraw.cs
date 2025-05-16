@@ -9,6 +9,11 @@ public class TestDraw : Card
     public override int ID { get; set; } = 9992;
     public override List<string> Tag { get; set; } = new List<string>();
 
+    public override string CardDiscription { get; set; } =
+    @"TextDraw
+    Draw a Card
+    Tag:";
+
     // Core functions
     public override async Task<bool> WhenDraw()
     {

@@ -89,7 +89,7 @@ public class Whiners : Creature
         if (HP <= 200)
         {
             int[] options = { 2, 3, 5};
-            float[] weights = { 0.2f, 0.4f, 0.4f}; // 权重为 70%, 30%
+            float[] weights = { 0.2f, 0.4f, 0.4f}; 
             CurrentAction = WeightedRandom(options, weights);
         }
 

@@ -9,6 +9,16 @@ public class Mine : Card
     public override string Name { get; set; } = "Mine";
     public override int ID { get; set; } = 0013;
     public override List<string> Tag { get; set; } = new List<string> { "Ammo" };
+    public override string CardDiscription { get; set; } =
+@"<Mine>
+
+Can not be Played
+
+When Shuffle: 
+Destroy each enemy if it is not going to defend,
+if you have less than 8 cards in your hand: destroy this card
+
+<Tag:Ammo>";
 
     // Core functions
     public override async Task<bool> WhenDraw()

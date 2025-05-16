@@ -29,7 +29,7 @@ public class Creature : MonoBehaviour
     //---------------------
     public string MyPlan;
 
-    void Start()
+    void Awake()
     {
         GM_Card = GameObject.Find(nameof(GM_Card)).GetComponent<GM_Card>();
         GM_Creature = GameObject.Find(nameof(GM_Creature)).GetComponent<GM_Creature>();

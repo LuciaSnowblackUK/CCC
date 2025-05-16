@@ -11,6 +11,17 @@ public class Ammo_Box : Card
     public override string Name { get; set; } = "Ammo Box";
     public override int ID { get; set; } = 0030;
     public override List<string> Tag { get; set; } = new List<string> { "Action" };
+    public override string CardDiscription { get; set; } =
+@"<AmmoBox>
+
+Discard up to 6 cards from your hand,
+then add 5 [Bullet] to the top of your deck,
+then add  5 [Bullet] to the bottom of your Discard Pile
+
+<Tag:Action>";
+
+
+
 
     // Core functions
     public override async Task<bool> WhenDraw()
@@ -36,8 +47,7 @@ public class Ammo_Box : Card
         bool C4 = await GM_Card.Discard(Card4, true);
         GameObject Card5 = await TargetingHelper.WaitForTargetWithComponentAsync<Card>(PlayerState.ChoosingCardOptional, GM_Global);
         bool C5 = await GM_Card.Discard(Card5, true);
-        GameObject Card6 = await TargetingHelper.WaitForTargetWithComponentAsync<Card>(PlayerState.ChoosingCardOptional, GM_Global);
-        bool C6 = await GM_Card.Discard(Card5, true);
+
 
 
 

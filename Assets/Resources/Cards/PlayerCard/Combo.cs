@@ -10,6 +10,16 @@ public class Combo : Card
     public override int ID { get; set; } = 0042;
     public override List<string> Tag { get; set; } = new List<string> { "Melee" };
 
+    public override string CardDiscription { get; set; } =
+@"<Combo>
+
+Can not be Played
+
+When Discarded:
+destroy this card
+
+<Tag:Melee>";
+
     // Core functions
     public override async Task<bool> WhenDraw()
     {

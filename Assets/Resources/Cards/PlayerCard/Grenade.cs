@@ -12,6 +12,17 @@ public class Grenade : Card
     public override int ID { get; set; } = 0011;
     public override List<string> Tag { get; set; } = new List<string> { "Ammo" };
 
+    public override string CardDiscription { get; set; } =
+@"<Grenade>
+
+Discard another card from your hand
+
+When Shuffle: 
+deal 20 Explosive Damage to each enemy and stun them 100
+
+
+<Tag:Ammo>";
+
     // Core functions
     public override async Task<bool> WhenDraw()
     {

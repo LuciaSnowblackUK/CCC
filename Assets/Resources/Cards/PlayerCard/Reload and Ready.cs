@@ -10,6 +10,18 @@ public class Reload_and_Ready : Card
     public override string Name { get; set; } = "Reload and Ready";
     public override int ID { get; set; } = 0031;
     public override List<string> Tag { get; set; } = new List<string> { "Action" };
+    public override string CardDiscription { get; set; } =
+@"<Reload and Ready>
+
+You gain 2 Draws, 
+Shuffle your discard pile into your deck
+Draw 2 cards
+
+When Discard:
+Heal yourself for 50 and change your Armor type to Armored [A]
+this turn
+
+<Tag:Action>";
 
     // Core functions
     public override async Task<bool> WhenDraw()

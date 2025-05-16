@@ -288,7 +288,8 @@ public class GM_Creature : MonoBehaviour
     // Ask all creature To Pick and Show their Action
     public void AllPickAction()
     {
-        for (int i = 6; i >= 0; i--)
+        UpdateCreature();
+        for (int i = 6; i > 0; i--)
         {
             if (CreatureList.ContainsKey(i))
             {
@@ -301,7 +302,8 @@ public class GM_Creature : MonoBehaviour
     // Ask all creature To Do their Action
     public void AllDoAction()
     {
-        for (int i = 6; i >= 0; i--)
+        UpdateCreature();
+        for (int i = 6; i > 0; i--)
         {
             if (CreatureList.ContainsKey(i))
             {

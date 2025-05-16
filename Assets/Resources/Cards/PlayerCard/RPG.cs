@@ -11,6 +11,16 @@ public class RPG : Card
     public override string Name { get; set; } = "RPG";
     public override int ID { get; set; } = 0014;
     public override List<string> Tag { get; set; } = new List<string> { "Ammo" };
+    public override string CardDiscription { get; set; } =
+@"<RPG>
+
+Can not be Played
+
+When Shuffle: 
+Deal 100 Kinetic damage to both you and target enemy,
+Deal 100 stun to the same target enemy
+
+<Tag:Ammo>";
 
     // Core functions
     public override async Task<bool> WhenDraw()

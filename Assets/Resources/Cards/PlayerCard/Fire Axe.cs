@@ -13,6 +13,16 @@ public class Fire_Axe : Card
     public override int ID { get; set; } = 0041;
     public override List<string> Tag { get; set; } = new List<string> { "Melee" };
 
+    public override string CardDiscription { get; set; } =
+@"<Fire Axe>
+
+Discard a Card from your hand
+Deal 20 Explosive damage 20 stun to target enemy,
+add 2 [Combo] card into your hand
+
+
+<Tag:Melee>";
+
     // Core functions
     public override async Task<bool> WhenDraw()
     {

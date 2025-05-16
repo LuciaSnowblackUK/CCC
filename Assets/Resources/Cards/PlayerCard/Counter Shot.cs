@@ -12,6 +12,14 @@ public class Counter_Shot : Card
     public override int ID { get; set; } = 0022;
     public override List<string> Tag { get; set; } = new List<string> { "Shooting" };
 
+    public override string CardDiscription { get; set; } =
+@"<Counter Shot>
+
+Discard up to 2 cards from your hand,
+Deal 60 kinetic Damage to target enemy and stun it 10
+
+<Tag:Shooting>";
+
     // Core functions
     public override async Task<bool> WhenDraw()
     {

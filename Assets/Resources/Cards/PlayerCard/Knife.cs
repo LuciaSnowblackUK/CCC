@@ -11,6 +11,14 @@ public class Knife : Card
     public override string Name { get; set; } = "Knife";
     public override int ID { get; set; } = 0040;
     public override List<string> Tag { get; set; } = new List<string> { "Melee" };
+    public override string CardDiscription { get; set; } =
+@"<Knife>
+
+Deal 10 ion damage 10 stun to target enemy,
+add a [Combo] card into your hand
+Draw a Card
+
+<Tag:Melee>";
 
     // Core functions
     public override async Task<bool> WhenDraw()

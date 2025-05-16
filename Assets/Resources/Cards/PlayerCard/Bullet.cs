@@ -12,6 +12,17 @@ public class Bullet : Card
     public override int ID { get; set; } = 0010;
     public override List<string> Tag { get; set; } = new List<string> { "Ammo" };
 
+    public override string CardDiscription { get; set; } =
+@"<Bullet>
+
+Discard another card from your hand
+
+WhenDiscard: 
+deal 20 Kinetic Damage and 10 stun to target enemy, 
+destroy this card
+
+<Tag:Ammo>";
+
     // Core functions
     public override async Task<bool> WhenDraw()
     {

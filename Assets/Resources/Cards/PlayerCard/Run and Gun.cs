@@ -13,6 +13,15 @@ public class Run_and_Gun : Card
     public override string Name { get; set; } = "Run and Gun";
     public override int ID { get; set; } = 0033;
     public override List<string> Tag { get; set; } = new List<string> { "Action" };
+    public override string CardDiscription { get; set; } =
+@"<Run and Gun>
+
+Discard up to 3 cards, 
+for each card discard this way, heal yourself 10 HP,
+for each [Combo] discard this way, add a [Bullet] to your hand
+for each [Bullet] discard this way, add a [Combo] to your hand
+
+<Tag:Action>";
 
     // Core functions
     public override async Task<bool> WhenDraw()

@@ -13,6 +13,19 @@ public class Wall_hammer : Card
     public override string Name { get; set; } = "Wall hammer";
     public override int ID { get; set; } = 0043;
     public override List<string> Tag { get; set; } = new List<string> { "Melee" };
+    public override string CardDiscription { get; set; } =
+@"<Wall hammer>
+
+Discard 2 Card from your hand, for each [Combo] discard this way you draw a card
+ 
+Deal 50 ion damage 100 stun to target enemy,
+
+add 2 [Combo] card into your hand
+
+When discarded:
+add 2 [Combo] card into your hand
+
+<Tag:Melee>";
 
     // Core functions
     public override async Task<bool> WhenDraw()

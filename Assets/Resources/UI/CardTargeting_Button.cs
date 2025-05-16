@@ -6,8 +6,9 @@ using UnityEngine.EventSystems;
 using Unity.VisualScripting;
 
 [RequireComponent(typeof(Button))]
-public class CardTargeting_Button : MonoBehaviour
+public class CardTargeting_Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+
     public GM_Card GM_Card;
     public GM_Creature GM_Creature;
     public GM_Global GM_Global;
@@ -15,12 +16,17 @@ public class CardTargeting_Button : MonoBehaviour
     GameObject Card;
     Card ThisCard;
 
+    public TMP_Text Detail_Text;  // 你想改变的文本
+
     void Start()
     {
         GM_Card = GameObject.Find(nameof(GM_Card)).GetComponent<GM_Card>();
         GM_Creature = GameObject.Find(nameof(GM_Creature)).GetComponent<GM_Creature>();
         GM_Global = GameObject.Find(nameof(GM_Global)).GetComponent<GM_Global>();
         GM_Level = GameObject.Find(nameof(GM_Level)).GetComponent<GM_Level>();
+
+        if (Detail_Text == null)
+            Detail_Text = GameObject.Find("Detail_Text").GetComponent<TMP_Text>();
 
         Card = transform.parent.gameObject;
         ThisCard = Card.GetComponent<Card>();
@@ -65,5 +71,13 @@ public class CardTargeting_Button : MonoBehaviour
         // {留白}：在这里添加你需要执行的具体操作
     }
 
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        Detail_Text.text = ThisCard.CardDiscription;
+    }
 
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        Detail_Text.text = " ---";
+    }
 }

@@ -11,6 +11,13 @@ public class Rapid_Fire : Card
     public override string Name { get; set; } = "Rapid Fire";
     public override int ID { get; set; } = 0021;
     public override List<string> Tag { get; set; } = new List<string> { "Shooting" };
+    public override string CardDiscription { get; set; } =
+@"<Rapid Fire>
+
+Discard up to 3 cards from your hand,
+then Add 4 [Bullet] cards to the top of your DiscardPile
+
+<Tag:Shooting>";
 
     // Core functions
     public override async Task<bool> WhenDraw()

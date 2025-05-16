@@ -12,6 +12,17 @@ public class QuickDraw : Card
     public override int ID { get; set; } = 0032;
     public override List<string> Tag { get; set; } = new List<string> { "Action" };
 
+    public override string CardDiscription { get; set; } =
+@"<QuickDraw>
+
+Draw a <Shooting> tag card that is closest to the top of your deck, repeat the same for a <Ammo> tag card
+
+When Discard:
+Shuffle your Discard Pile.
+then, you fill up your Draws.
+
+<Tag:Action>";
+
     // Core functions
     public override async Task<bool> WhenDraw()
     {

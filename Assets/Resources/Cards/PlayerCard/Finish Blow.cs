@@ -13,6 +13,18 @@ public class Finish_Blow : Card
     public override int ID { get; set; } = 0044;
     public override List<string> Tag { get; set; } = new List<string> { "Melee" };
 
+    public override string CardDiscription { get; set; } =
+@"<Finish Blow>
+
+Deal 100 ion damage and 1000 stun to target enemy
+
+Discard all your hand
+
+if this card kill an enemy, you get 1 Max Draws if your Max Draw is lower than 6, and Draw 3 Cards, then, for each [Combo] discarded by this Finish Blow, you heal 20HP
+
+
+<Tag:Melee>";
+
     // Core functions
     public override async Task<bool> WhenDraw()
     {

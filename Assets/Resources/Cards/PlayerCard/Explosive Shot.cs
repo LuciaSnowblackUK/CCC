@@ -12,6 +12,13 @@ public class Explosive_Shot: Card
     public override int ID { get; set; } = 0023;
     public override List<string> Tag { get; set; } = new List<string> { "Shooting" };
 
+    public override string CardDiscription { get; set; } =
+@"<Explosive Shot>
+
+Discard up to 3 cards from your hand,Deal 20 explosive damage and 10 stun to target for each <Ammo> tag discarded this way
+
+<Tag:Shooting>";
+
     // Core functions
     public override async Task<bool> WhenDraw()
     {

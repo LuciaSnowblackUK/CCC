@@ -12,6 +12,14 @@ public class Kill_Shot : Card
     public override int ID { get; set; } = 0020;
     public override List<string> Tag { get; set; } = new List<string> { "Shooting" };
 
+    public override string CardDiscription { get; set; } =
+@"<Kill Shot>
+
+Discard up to 2 cards from your hand, if at least  1 <Ammo>tag card is discarded, deal 100 Kinetic Damage to target enemy
+
+
+<Tag:Shooting>";
+
     // Core functions
     public override async Task<bool> WhenDraw()
     {

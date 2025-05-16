@@ -9,6 +9,8 @@ public class TestDiscard : Card
     public override int ID { get; set; } = 9992;
     public override List<string> Tag { get; set; } = new List<string>();
 
+
+
     // Core functions
     public override async Task<bool> WhenDraw()
     {
