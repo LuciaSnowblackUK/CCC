@@ -16,6 +16,7 @@ public class Combo : Card
 Can not be Played
 
 When Discarded:
+heal yourself 5,
 destroy this card
 
 <Tag:Melee>";
@@ -44,7 +45,7 @@ destroy this card
 
     public override async Task<bool> WhenDiscard()
     {
-
+        GM_Creature.Heal(0, 5);
         Destroy(this.gameObject);
         return false;
     }
