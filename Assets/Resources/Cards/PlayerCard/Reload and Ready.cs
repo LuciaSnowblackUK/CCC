@@ -14,8 +14,8 @@ public class Reload_and_Ready : Card
 @"<Reload and Ready>
 
 You gain 2 Draws, 
-Shuffle your discard pile into your deck
-Draw 2 cards
+Draw 2 cards,
+Shuffle your discard pile into your deck.
 
 When Discard:
 Heal yourself for 50 and change your Armor type to Armored [A]
@@ -41,10 +41,12 @@ this turn
         //---------------------------------------------------------------------------------------------------------------
         //Player gain 2 Draws
         GM_Global.Draws += 2;
-        //Shuffle your discard pile into your deck
-        await GM_Card.Shuffle(false,true);
+
         //Draw 2 cards
         await GM_Card.Draw(2, true);
+
+        //Shuffle your discard pile into your deck
+        await GM_Card.Shuffle(false, true);
 
         //---------------------------------------------------------------------------------------------------------------
 
