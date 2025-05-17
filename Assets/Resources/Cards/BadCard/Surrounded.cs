@@ -10,6 +10,16 @@ public class Surrounded : Card
     public override int ID { get; set; } = 9991;
     public override List<string> Tag { get; set; } = new List<string> { "Bad" };
 
+    public override string CardDiscription { get; set; } =
+@"<Surrounded>
+
+Can not be Played
+
+When Discarded:
+destroy this card
+
+<Tag:Bad>";
+
     // Core functions
     public override async Task<bool> WhenDraw()
     {
