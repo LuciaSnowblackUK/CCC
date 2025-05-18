@@ -16,11 +16,11 @@ public class Finish_Blow : Card
     public override string CardDiscription { get; set; } =
 @"<Finish Blow>
 
-Deal 100 ion damage and 1000 stun to target enemy
+Deal 100 ion damage and 100 stun to target enemy
 
 Discard all your hand
 
-if this card kill an enemy, you get 1 Max Draws if your Max Draw is lower than 6, and Draw 3 Cards, then, for each [Combo] discarded by this Finish Blow, you heal 20HP
+if this card kill an enemy, you get 1 Max Draws if your Max Draw is lower than 6, then, for each [Combo] discarded by this Finish Blow, you heal 5 HP
 
 
 <Tag:Melee>";
@@ -54,9 +54,9 @@ if this card kill an enemy, you get 1 Max Draws if your Max Draw is lower than 6
         {
             int TargetInGameID = TargetCreature.InGameID;
 
-            // 对目标造成50的伤害并使其Stun100
+            // 对目标造成100的i伤害并使其Stun100
             Kill = GM_Creature.Damage(TargetInGameID, "I", 100);
-            GM_Creature.Stun(TargetInGameID, 1000);
+            GM_Creature.Stun(TargetInGameID, 100);
         }
 
 
@@ -86,11 +86,7 @@ if this card kill an enemy, you get 1 Max Draws if your Max Draw is lower than 6
                 GM_Global.MaxDraws++;
             }
 
-            GM_Global.Draws = GM_Global.MaxDraws;
-
-            await GM_Card.Draw(3, true);
-
-            GM_Creature.Heal(0, 20 * ComboDiscarded);
+            GM_Creature.Heal(0, 5 * ComboDiscarded);
 
         }
 

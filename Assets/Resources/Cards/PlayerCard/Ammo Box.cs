@@ -14,7 +14,7 @@ public class Ammo_Box : Card
     public override string CardDiscription { get; set; } =
 @"<AmmoBox>
 
-Discard up to 6 cards from your hand,
+Discard up to 5 cards from your hand,
 then add 5 [Bullet] to the top of your deck,
 then add  5 [Bullet] to the bottom of your Discard Pile
 
