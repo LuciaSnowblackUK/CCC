@@ -26,6 +26,13 @@ then add  5 [Bullet] to the bottom of your Discard Pile
     // Core functions
     public override async Task<bool> WhenDraw()
     {
+
+
+        return false;
+    }
+
+    public override async Task<bool> WhenPlayed()
+    {
         GM_Global.CurrentPlayerState = PlayerState.Idle;
 
 
@@ -76,13 +83,6 @@ then add  5 [Bullet] to the bottom of your Discard Pile
         // into DiscardPile after play
         await GM_Card.Discard(this.gameObject, false);
         GM_Global.CurrentPlayerState = PlayerState.PlayingCard;
-
-        return false;
-    }
-
-    public override async Task<bool> WhenPlayed()
-    {
-
 
         return false;
     }

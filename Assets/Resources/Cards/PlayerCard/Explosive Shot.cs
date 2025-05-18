@@ -38,17 +38,19 @@ Discard up to 3 cards from your hand,Deal 20 explosive damage and 10 stun to tar
 
         //Targeting and Discard those card
         GameObject Card1 = await TargetingHelper.WaitForTargetWithComponentAsync<Card>(PlayerState.ChoosingCardOptional, GM_Global);
+        bool K1 = Card1.GetComponent<Card>().Tag.Contains("Ammo");
         bool C1 = await GM_Card.Discard(Card1, true);
         GameObject Card2 = await TargetingHelper.WaitForTargetWithComponentAsync<Card>(PlayerState.ChoosingCardOptional, GM_Global);
+        bool K2 = Card2.GetComponent<Card>().Tag.Contains("Ammo");
         bool C2 = await GM_Card.Discard(Card2, true);
         GameObject Card3 = await TargetingHelper.WaitForTargetWithComponentAsync<Card>(PlayerState.ChoosingCardOptional, GM_Global);
+        bool K3 = Card3.GetComponent<Card>().Tag.Contains("Ammo");
         bool C3 = await GM_Card.Discard(Card3, true);
 
         //
-
         if (C1)
         {
-            if (Card1.GetComponent<Card>().Tag.Contains("Ammo"))
+            if (K1)
             {
                 // 玩家选择敌人（通过静态方法等待选择）
                 GameObject Target = await TargetingHelper.WaitForTargetWithComponentAsync<Creature>(PlayerState.ChoosingEnemy, GM_Global);
@@ -68,7 +70,7 @@ Discard up to 3 cards from your hand,Deal 20 explosive damage and 10 stun to tar
 
         if (C2)
         {
-            if (Card2.GetComponent<Card>().Tag.Contains("Ammo"))
+            if (K2)
             {
                 // 玩家选择敌人（通过静态方法等待选择）
                 GameObject Target = await TargetingHelper.WaitForTargetWithComponentAsync<Creature>(PlayerState.ChoosingEnemy, GM_Global);
@@ -88,7 +90,7 @@ Discard up to 3 cards from your hand,Deal 20 explosive damage and 10 stun to tar
 
         if (C3)
         {
-            if (Card3.GetComponent<Card>().Tag.Contains("Ammo"))
+            if (K3)
             {
                 // 玩家选择敌人（通过静态方法等待选择）
                 GameObject Target = await TargetingHelper.WaitForTargetWithComponentAsync<Creature>(PlayerState.ChoosingEnemy, GM_Global);
@@ -107,7 +109,6 @@ Discard up to 3 cards from your hand,Deal 20 explosive damage and 10 stun to tar
         }
 
 
-
         //---------------------------------------------------------------------------------------------------------------
 
         //Using Draws to Draw
@@ -116,7 +117,7 @@ Discard up to 3 cards from your hand,Deal 20 explosive damage and 10 stun to tar
             GM_Global.Draws--;
             await GM_Card.Draw(1, true);
         }
-
+        
         // into DiscardPile after play
         await GM_Card.Discard(this.gameObject, false);
         GM_Global.CurrentPlayerState = PlayerState.PlayingCard;

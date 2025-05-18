@@ -38,10 +38,16 @@ for each [Bullet] discard this way, add a [Combo] to your hand
         //---------------------------------------------------------------------------------------------------------------
         //Targeting and Discard those card
         GameObject Card1 = await TargetingHelper.WaitForTargetWithComponentAsync<Card>(PlayerState.ChoosingCardOptional, GM_Global);
+        bool K11 = Card1.GetComponent<Card>().ID == 0010;
+        bool K12 = Card1.GetComponent<Card>().ID == 0042;
         bool C1 = await GM_Card.Discard(Card1, true);
         GameObject Card2 = await TargetingHelper.WaitForTargetWithComponentAsync<Card>(PlayerState.ChoosingCardOptional, GM_Global);
+        bool K21 = Card2.GetComponent<Card>().ID == 0010;
+        bool K22 = Card2.GetComponent<Card>().ID == 0042;
         bool C2 = await GM_Card.Discard(Card2, true);
         GameObject Card3 = await TargetingHelper.WaitForTargetWithComponentAsync<Card>(PlayerState.ChoosingCardOptional, GM_Global);
+        bool K31 = Card3.GetComponent<Card>().ID == 0010;
+        bool K32 = Card3.GetComponent<Card>().ID == 0042;
         bool C3 = await GM_Card.Discard(Card3, true);
 
         //Heal according to card discarded
@@ -51,12 +57,12 @@ for each [Bullet] discard this way, add a [Combo] to your hand
         // deal with cards
         if (C1)
         {
-            if (Card1.GetComponent<Card>().ID == 0010)
+            if (K11)
             {
                 await GM_Card.Add(0042, "PlayerCard", "Hand", false);
             }
 
-            if (Card1.GetComponent<Card>().ID == 0042)
+            if (K12)
             {
                 await GM_Card.Add(0010, "PlayerCard", "Hand", false);
             }
@@ -65,12 +71,12 @@ for each [Bullet] discard this way, add a [Combo] to your hand
 
         if (C2)
         {
-            if (Card2.GetComponent<Card>().ID == 0010)
+            if (K21)
             {
                 await GM_Card.Add(0042, "PlayerCard", "Hand", false);
             }
 
-            if (Card2.GetComponent<Card>().ID == 0042)
+            if (K22)
             {
                 await GM_Card.Add(0010, "PlayerCard", "Hand", false);
             }
@@ -78,34 +84,17 @@ for each [Bullet] discard this way, add a [Combo] to your hand
 
         if (C3)
         {
-            if (Card3.GetComponent<Card>().ID == 0010)
+            if (K31)
             {
                 await GM_Card.Add(0042, "PlayerCard", "Hand", false);
             }
 
-            if (Card3.GetComponent<Card>().ID == 0042)
+            if (K32)
             {
                 await GM_Card.Add(0010, "PlayerCard", "Hand", false);
             }
         }
 
-
-        // 玩家选择敌人（通过静态方法等待选择）
-        GameObject Target = await TargetingHelper.WaitForTargetWithComponentAsync<Creature>(PlayerState.ChoosingEnemy, GM_Global);
-
-        Creature TargetCreature = Target.GetComponent<Creature>();
-        // 如果选择了有效的敌人
-        if (TargetCreature != null)
-        {
-            int TargetInGameID = TargetCreature.InGameID;
-
-            // 对目标造成50的伤害并使其Stun100
-            GM_Creature.Damage(TargetInGameID, "I", 50);
-            GM_Creature.Stun(TargetInGameID, 100);
-        }
-
-        //add 2[Combo] card into your hand
-        await GM_Card.Add(0042, "PlayerCard", "Hand", false);
 
 
         //---------------------------------------------------------------------------------------------------------------

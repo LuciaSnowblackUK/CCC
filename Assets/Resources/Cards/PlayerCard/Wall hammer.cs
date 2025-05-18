@@ -44,14 +44,18 @@ add 2 [Combo] card into your hand
         //To Choose Cards and Discard them--------------------------------------------------------------------------------------------------------------------------]
         GameObject Card1 = null;
         bool C1 = false;
+        bool K1 = false;
         GameObject Card2 = null;
         bool C2 = false;
+        bool K2 = false;
 
         if (GM_Card.ReturnHandCard().Count != 0)
         {
             Card1 = await TargetingHelper.WaitForTargetWithComponentAsync<Card>(PlayerState.ChoosingCard, GM_Global);
+            K1 = Card1.GetComponent<Card>().ID == 0042;
             C1 = await GM_Card.Discard(Card1, true);
             Card2 = await TargetingHelper.WaitForTargetWithComponentAsync<Card>(PlayerState.ChoosingCard, GM_Global);
+            K2 = Card2.GetComponent<Card>().ID == 0042;
             C2 = await GM_Card.Discard(Card2, true);
         }
 
@@ -62,7 +66,7 @@ add 2 [Combo] card into your hand
         // deal with cards
         if (C1)
         {
-            if (Card1.GetComponent<Card>().ID == 0042)
+            if (K1)
             {
                 await GM_Card.Draw(1, true);
             }
@@ -71,7 +75,7 @@ add 2 [Combo] card into your hand
 
         if (C2)
         {
-            if (Card2.GetComponent<Card>().ID == 0042)
+            if (K2)
             {
                 await GM_Card.Draw(1, true);
             }

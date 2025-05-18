@@ -562,7 +562,7 @@ GameObject:
   - component: {fileID: 797333005302039639}
   - component: {fileID: 2888532922058506289}
   - component: {fileID: 8925744329827923389}
-  - component: {fileID: 9105606698759146238}
+  - component: {fileID: 4402225459922782071}
   m_Layer: 0
   m_Name: Combo
   m_TagString: Untagged
@@ -643,7 +643,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &9105606698759146238
+--- !u!114 &4402225459922782071
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -652,7 +652,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6528072288455905600}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a8eb64c7d78b854cbcca219a6bf1860, type: 3}
+  m_Script: {fileID: 11500000, guid: 22164ab3fe32b0244a7fe874b4600bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   GM_Card: {fileID: 0}
@@ -938,7 +938,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Can not be Played
 
-    
+
 
     When Discarded:
 
