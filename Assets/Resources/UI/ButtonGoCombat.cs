@@ -18,7 +18,10 @@ public class ButtonGoCombat : MonoBehaviour
     }
     public void OnButtonClick()
     {
-        SceneManager.LoadScene(LevelName);
-        // {留白}：在这里添加你需要执行的具体操作
-    }
+        if (DeckLoader.Instance.deckCount == 12)
+        {
+            SceneManager.LoadScene(LevelName); // need 12 cards in deck
+        }
+
+     }
 }
