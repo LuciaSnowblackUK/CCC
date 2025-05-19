@@ -242,6 +242,7 @@ GameObject:
   - component: {fileID: 5558630044233559664}
   - component: {fileID: 7304277437274869168}
   - component: {fileID: 5271192018923636492}
+  - component: {fileID: 2074102151938154837}
   m_Layer: 0
   m_Name: Whiners
   m_TagString: Untagged
@@ -339,6 +340,28 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!95 &2074102151938154837
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2786677765629487786}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9221061b97939bc4db4a4fc070ed4f7c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2788965546398290730
 GameObject:
   m_ObjectHideFlags: 0
