@@ -56,7 +56,7 @@ if this card kill an enemy, you get 1 Max Draws if your Max Draw is lower than 6
                 int TargetInGameID = TargetCreature.InGameID;
 
                 // 对目标造成100的i伤害并使其Stun100
-                Kill = GM_Creature.Damage(TargetInGameID, "I", 100);
+                Kill = await GM_Creature.Damage(TargetInGameID, "I", 100);
                 GM_Creature.Stun(TargetInGameID, 100);
             }
         }
