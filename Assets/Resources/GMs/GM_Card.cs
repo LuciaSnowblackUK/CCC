@@ -32,6 +32,8 @@ public class GM_Card : MonoBehaviour
         if (GM_Creature == null) Debug.LogError("GM_Creature not found or missing component.");
         if (GM_Global == null) Debug.LogError("GM_Global not found or missing component.");
         if (GM_Level == null) Debug.LogError("GM_Level not found or missing component.");
+
+        InstantiateDeckFromIDs(LoadDeckFromPlayerPrefs(), "PlayerCard");
     }
 
 
@@ -370,5 +372,47 @@ public List<GameObject> ReturnDeckCard()
     {
         DiscardPile.UpdateCards();
         return DiscardPile.Cards;
+    }
+
+    public List<int> LoadDeckFromPlayerPrefs()
+    {
+        string idString = PlayerPrefs.GetString("DeckCardIDs", "");
+        if (string.IsNullOrEmpty(idString))
+            return new List<int>();
+
+        // Split and parse to int
+        return idString.Split(',').Select(id => int.Parse(id)).ToList();
+    }
+
+    public void InstantiateDeckFromIDs(List<int> cardIDs, string packName)
+    {
+        // Clear current deck
+        Deck.Cards.Clear();
+
+        // Load all prefabs in the pack
+        GameObject[] spawnList = Resources.LoadAll<GameObject>("Cards/" + packName);
+
+        foreach (int id in cardIDs)
+        {
+            // Find the prefab with the matching ID
+            GameObject prefab = spawnList.FirstOrDefault(go => {
+                Card card = go.GetComponent<Card>();
+                return card != null && card.ID == id;
+            });
+
+            if (prefab != null)
+            {
+                // Instantiate and add to deck
+                GameObject instance = Instantiate(prefab, Deck.transform);
+                Deck.Cards.Add(instance);
+            }
+            else
+            {
+                Debug.LogWarning($"Card prefab with ID {id} not found in pack {packName}.");
+            }
+        }
+
+        Deck.ResetOrder();
+        Deck.UpdateCards();
     }
 }
