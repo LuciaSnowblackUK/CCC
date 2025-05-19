@@ -52,10 +52,17 @@ add 2 [Combo] card into your hand
         if (GM_Card.ReturnHandCard().Count != 0)
         {
             Card1 = await TargetingHelper.WaitForTargetWithComponentAsync<Card>(PlayerState.ChoosingCard, GM_Global);
-            K1 = Card1.GetComponent<Card>().ID == 0042;
+            if (Card1 != null)
+            {
+                K1 = Card1.GetComponent<Card>().ID == 0042;
+            }
+
             C1 = await GM_Card.Discard(Card1, true);
             Card2 = await TargetingHelper.WaitForTargetWithComponentAsync<Card>(PlayerState.ChoosingCard, GM_Global);
-            K2 = Card2.GetComponent<Card>().ID == 0042;
+            if (Card2 != null)
+            {
+                K1 = Card2.GetComponent<Card>().ID == 0042;
+            }
             C2 = await GM_Card.Discard(Card2, true);
         }
 

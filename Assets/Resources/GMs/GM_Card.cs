@@ -68,7 +68,7 @@ public class GM_Card : MonoBehaviour
 
             }
 
-            GameObject TargetCard = Deck.Cards[0];
+            GameObject TargetCard = ReturnDeckCard()[0];
 
             // 移动卡片到手牌
             TargetCard.transform.SetParent(Hand.transform, false);
@@ -106,11 +106,11 @@ public class GM_Card : MonoBehaviour
         // 选择来源列表
         if (where == "Deck")
         {
-            sourceList = Deck.Cards;
+            sourceList = ReturnDeckCard();
         }
         else if (where == "DiscardPile")
         {
-            sourceList = DiscardPile.Cards;
+            sourceList = ReturnDiscardPileCard();
         }
         else
         {
@@ -122,10 +122,14 @@ public class GM_Card : MonoBehaviour
         {
             if (card.GetComponent<Card>().Tag.Contains(tag))
             {
+                Debug.Log(card);
+                card.transform.SetParent(Deck.transform);   // 设置为 handZone 的子物体
+                card.transform.SetSiblingIndex(0);              // 放在最前面（第一个）
+                ReturnDeckCard().Insert(0, card);
                 sourceList.Remove(card);
 
                 // 插入目标堆顶部，如果是从 Discard 来的，需要插到 Deck 顶部
-                Deck.Cards.Insert(0, card);
+
 
                 await Draw(1, ifTrigger); // 从 Deck 抽
                 return true;

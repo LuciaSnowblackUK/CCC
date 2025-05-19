@@ -37,17 +37,34 @@ for each [Bullet] discard this way, add a [Combo] to your hand
         transform.SetParent(null); transform.position = new Vector3(100f, 100f, transform.position.z);
         //---------------------------------------------------------------------------------------------------------------
         //Targeting and Discard those card
+
+
         GameObject Card1 = await TargetingHelper.WaitForTargetWithComponentAsync<Card>(PlayerState.ChoosingCardOptional, GM_Global);
-        bool K11 = Card1.GetComponent<Card>().ID == 0010;
-        bool K12 = Card1.GetComponent<Card>().ID == 0042;
+        bool K11 = false;
+        bool K12 = false;
+        if (Card1 != null)
+        {
+            K11 = Card1.GetComponent<Card>().ID == 0010;
+            K12 = Card1.GetComponent<Card>().ID == 0042;
+        }
         bool C1 = await GM_Card.Discard(Card1, true);
         GameObject Card2 = await TargetingHelper.WaitForTargetWithComponentAsync<Card>(PlayerState.ChoosingCardOptional, GM_Global);
-        bool K21 = Card2.GetComponent<Card>().ID == 0010;
-        bool K22 = Card2.GetComponent<Card>().ID == 0042;
+        bool K21 = false;
+        bool K22 = false;
+        if (Card2 != null)
+        {
+            K21 = Card2.GetComponent<Card>().ID == 0010;
+            K22 = Card2.GetComponent<Card>().ID == 0042;
+        }
         bool C2 = await GM_Card.Discard(Card2, true);
         GameObject Card3 = await TargetingHelper.WaitForTargetWithComponentAsync<Card>(PlayerState.ChoosingCardOptional, GM_Global);
-        bool K31 = Card3.GetComponent<Card>().ID == 0010;
-        bool K32 = Card3.GetComponent<Card>().ID == 0042;
+        bool K31 = false;
+        bool K32 = false;
+        if (Card3 != null)
+        {
+            K31 = Card2.GetComponent<Card>().ID == 0010;
+            K32 = Card2.GetComponent<Card>().ID == 0042;
+        }
         bool C3 = await GM_Card.Discard(Card3, true);
 
         //Heal according to card discarded
