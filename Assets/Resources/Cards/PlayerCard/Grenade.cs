@@ -1,5 +1,6 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -62,18 +63,19 @@ deal 20 Explosive Damage to each enemy and stun them 10,
 
     public override async Task<bool> WhenShuffle()
     {
-        foreach (int InGameID in GM_Creature.UpdateCreature().Keys)
+        // ✅ 使用 ToList() 复制 key 列表，避免枚举时修改字典
+        foreach (int InGameID in GM_Creature.UpdateCreature().Keys.ToList())
         {
-            if (GM_Creature.UpdateCreature()[InGameID].InGameID != 0) //InGameID = 0 means player, this is a AOE effect for enemies
+            if (GM_Creature.UpdateCreature()[InGameID].InGameID != 0)
             {
                 GM_Creature.Damage(InGameID, "E", 20);
                 GM_Creature.Stun(InGameID, 10);
             }
-
         }
 
         return false;
     }
+
 
     public override async Task<bool> WhenDiscard()
     {

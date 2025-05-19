@@ -726,16 +726,14 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Deal 100 ion damage and 100 stun to target enemy
 
-    
 
-    Discard
-    all your hand
+    Discard all your
+    hand
 
-    
 
-    if this card kill an enemy, you get 1 Max Draws if
-    your Max Draw is lower than 6, then, for each [Combo] discarded by this Finish
-    Blow, you heal 5 HP'
+    if this card kill an enemy, you get 1 Max Draws if your Max Draw is
+    lower than 6, then, for each [Combo] discarded by this Finish Blow, you heal
+    5 HP'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

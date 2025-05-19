@@ -62,8 +62,8 @@ for each [Bullet] discard this way, add a [Combo] to your hand
         bool K32 = false;
         if (Card3 != null)
         {
-            K31 = Card2.GetComponent<Card>().ID == 0010;
-            K32 = Card2.GetComponent<Card>().ID == 0042;
+            K31 = Card3.GetComponent<Card>().ID == 0010;
+            K32 = Card3.GetComponent<Card>().ID == 0042;
         }
         bool C3 = await GM_Card.Discard(Card3, true);
 
