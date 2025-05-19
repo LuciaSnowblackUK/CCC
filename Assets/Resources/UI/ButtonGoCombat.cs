@@ -9,19 +9,21 @@ using UnityEngine.SceneManagement;
 public class ButtonGoCombat : MonoBehaviour
 {
     public string LevelName = "TestCombat";
+    DeckLoader DeckLoader;
 
     private void Awake()
     {
         // 获取按钮组件并添加点击事件监听
         Button button = GetComponent<Button>();
         button.onClick.AddListener(OnButtonClick);
+        DeckLoader = GameObject.Find("DeckLoader").GetComponent<DeckLoader>();
     }
     public void OnButtonClick()
     {
         if (DeckLoader.Instance.deckCount == 12)
         {
-            SceneManager.LoadScene(LevelName); // need 12 cards in deck
+            DeckLoader.SaveDeckToPlayerPrefs();
+            SceneManager.LoadScene(LevelName);
         }
-
-     }
+    }
 }
