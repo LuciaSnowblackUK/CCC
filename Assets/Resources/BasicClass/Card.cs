@@ -4,6 +4,7 @@ using NUnit.Framework;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class Card : MonoBehaviour
 {
@@ -21,20 +22,22 @@ public class Card : MonoBehaviour
 
     void Start()
     {
-        GM_Card = GameObject.Find(nameof(GM_Card)).GetComponent<GM_Card>();
-        GM_Creature = GameObject.Find(nameof(GM_Creature)).GetComponent<GM_Creature>();
-        GM_Global = GameObject.Find(nameof(GM_Global)).GetComponent<GM_Global>();
-        GM_Level = GameObject.Find(nameof(GM_Level)).GetComponent<GM_Level>();
+        // 只在名为 "TestCombat" 的场景中执行
+        if (SceneManager.GetActiveScene().name == "TestCombat")
+        {
+            GM_Card = GameObject.Find(nameof(GM_Card)).GetComponent<GM_Card>();
+            GM_Creature = GameObject.Find(nameof(GM_Creature)).GetComponent<GM_Creature>();
+            GM_Global = GameObject.Find(nameof(GM_Global)).GetComponent<GM_Global>();
+            GM_Level = GameObject.Find(nameof(GM_Level)).GetComponent<GM_Level>();
 
-        Hint_Text = GameObject.Find(nameof(Hint_Text)).GetComponent<TMP_Text>();
+            Hint_Text = GameObject.Find(nameof(Hint_Text)).GetComponent<TMP_Text>();
 
-
-        // 可选：报错检查
-        if (GM_Card == null) Debug.LogError("GM_Card not found or missing component.");
-        if (GM_Creature == null) Debug.LogError("GM_Creature not found or missing component.");
-        if (GM_Global == null) Debug.LogError("GM_Global not found or missing component.");
-        if (GM_Level == null) Debug.LogError("GM_Level not found or missing component.");
-
+            // 可选：报错检查
+            if (GM_Card == null) Debug.LogError("GM_Card not found or missing component.");
+            if (GM_Creature == null) Debug.LogError("GM_Creature not found or missing component.");
+            if (GM_Global == null) Debug.LogError("GM_Global not found or missing component.");
+            if (GM_Level == null) Debug.LogError("GM_Level not found or missing component.");
+        }
     }
 
 

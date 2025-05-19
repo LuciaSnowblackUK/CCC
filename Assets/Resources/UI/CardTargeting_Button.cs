@@ -45,7 +45,7 @@ public class CardTargeting_Button : MonoBehaviour, IPointerEnterHandler, IPointe
         button.onClick.AddListener(OnButtonClick);
     }
 
-    public void OnButtonClick()
+    public async void OnButtonClick()
     {
         if (GM_Global.CurrentPlayerState == PlayerState.ChoosingCard || GM_Global.CurrentPlayerState == PlayerState.ChoosingCardOptional)
         {
@@ -57,7 +57,7 @@ public class CardTargeting_Button : MonoBehaviour, IPointerEnterHandler, IPointe
         else if (GM_Global.CurrentPlayerState == PlayerState.PlayingCard)
         {
             //能出牌的时候点击会出牌
-            ThisCard.WhenPlayed();
+            await ThisCard.WhenPlayed();
         }
 
         else
