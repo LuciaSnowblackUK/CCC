@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Threading.Tasks;
 
 public class Dummy : Creature
 {
@@ -28,7 +29,7 @@ public class Dummy : Creature
         return false;
     }
 
-    public override bool CheckHP()
+    public override async Task<bool> CheckHP()
     {
         if (HP <= 0)
         {
