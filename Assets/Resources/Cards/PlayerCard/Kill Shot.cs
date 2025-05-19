@@ -63,16 +63,19 @@ if at least 1 <Ammo>tag card is discarded, deal 100 Kinetic Damage to target ene
             {
                 // 玩家选择敌人（通过静态方法等待选择）
                 GameObject Target = await TargetingHelper.WaitForTargetWithComponentAsync<Creature>(PlayerState.ChoosingEnemy, GM_Global);
-
-                Creature TargetCreature = Target.GetComponent<Creature>();
-                // 如果选择了有效的敌人
-                if (TargetCreature != null)
+                if (Target != null)
                 {
-                    int TargetInGameID = TargetCreature.InGameID;
+                    Creature TargetCreature = Target.GetComponent<Creature>();
+                    // 如果选择了有效的敌人
+                    if (TargetCreature != null)
+                    {
+                        int TargetInGameID = TargetCreature.InGameID;
 
-                    // 100 K damage 
-                    GM_Creature.Damage(TargetInGameID, "K", 100);
+                        // 100 K damage 
+                        GM_Creature.Damage(TargetInGameID, "K", 100);
+                    }
                 }
+    
 
 
             }

@@ -92,17 +92,20 @@ add 2 [Combo] card into your hand
 
         // 玩家选择敌人（通过静态方法等待选择）
         GameObject Target = await TargetingHelper.WaitForTargetWithComponentAsync<Creature>(PlayerState.ChoosingEnemy, GM_Global);
-
-        Creature TargetCreature = Target.GetComponent<Creature>();
-        // 如果选择了有效的敌人
-        if (TargetCreature != null)
+        if (Target != null)
         {
-            int TargetInGameID = TargetCreature.InGameID;
+            Creature TargetCreature = Target.GetComponent<Creature>();
+            // 如果选择了有效的敌人
+            if (TargetCreature != null)
+            {
+                int TargetInGameID = TargetCreature.InGameID;
 
-            // 对目标造成50的伤害并使其Stun100
-            GM_Creature.Damage(TargetInGameID, "I", 50);
-            GM_Creature.Stun(TargetInGameID, 100);
+                // 对目标造成50的伤害并使其Stun100
+                GM_Creature.Damage(TargetInGameID, "I", 50);
+                GM_Creature.Stun(TargetInGameID, 100);
+            }
         }
+ 
 
         //add 2[Combo] card into your hand
         await GM_Card.Add(0042, "PlayerCard", "Hand", false);

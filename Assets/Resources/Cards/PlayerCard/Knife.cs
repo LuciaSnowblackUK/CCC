@@ -42,17 +42,20 @@ Draw a Card
 
         // 玩家选择敌人（通过静态方法等待选择）
         GameObject Target = await TargetingHelper.WaitForTargetWithComponentAsync<Creature>(PlayerState.ChoosingEnemy, GM_Global);
-
-        Creature TargetCreature = Target.GetComponent<Creature>();
-        // 如果选择了有效的敌人
-        if (TargetCreature != null)
+        if (Target != null)
         {
-            int TargetInGameID = TargetCreature.InGameID;
+            Creature TargetCreature = Target.GetComponent<Creature>();
+            // 如果选择了有效的敌人
+            if (TargetCreature != null)
+            {
+                int TargetInGameID = TargetCreature.InGameID;
 
-            // Deal 10 ion damage 10 stun to target enemy
-            GM_Creature.Damage(TargetInGameID, "I", 10);
-            GM_Creature.Stun(TargetInGameID, 10);
+                // Deal 10 ion damage 10 stun to target enemy
+                GM_Creature.Damage(TargetInGameID, "I", 10);
+                GM_Creature.Stun(TargetInGameID, 10);
+            }
         }
+
 
         //add 1 [Combo] card into your hand
         await GM_Card.Add(0042, "PlayerCard", "Hand", false);
