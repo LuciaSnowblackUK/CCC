@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections;
 using System.Globalization;
+using System.Threading.Tasks;
 
 public class GM_Creature : MonoBehaviour
 {
@@ -95,7 +96,7 @@ public class GM_Creature : MonoBehaviour
     }
 
     //Method: Deal Damage to the Creature by InGameID, adjust by the Creature.ArmorType , return true when fully kill target
-    public bool Damage(int TargetInGameID,string DamageType,int DamageAmount)
+    public async Task<bool> Damage(int TargetInGameID,string DamageType,int DamageAmount)
     {
         UpdateCreature();
         Creature TargetCreature = CreatureList[TargetInGameID];
@@ -195,7 +196,7 @@ public class GM_Creature : MonoBehaviour
 
         }
 
-        bool Kill = TargetCreature.CheckHP();
+        bool Kill = await TargetCreature.CheckHP();
 
         UpdateCreature();
 

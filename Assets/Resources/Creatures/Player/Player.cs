@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Threading.Tasks;
 
 public class Player : Creature
 {
@@ -17,7 +18,7 @@ public class Player : Creature
 
     // 覆写逻辑方法
 
-    public override bool CheckHP()
+    public override async Task<bool> CheckHP()
     {
         if (HP <= 0)
         {

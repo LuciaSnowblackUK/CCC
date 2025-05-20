@@ -63,6 +63,7 @@ public string GetDeckListAsText()
     {
         string cardName = GetNameByID(kvp.Key);
         result += $"{cardName}: {kvp.Value}\n";
+        
     }
 
     return result;
@@ -115,6 +116,25 @@ public string GetDeckListAsText()
                 deckCount = DeckList.Values.Sum();
                 return "0";
         }
+    }
+
+    public void SaveDeckToPlayerPrefs()
+    {
+        // Create a list to hold all card IDs, including duplicates for multiples
+        List<int> cardIDs = new List<int>();
+        foreach (var kvp in DeckList)
+        {
+            // Add the card ID as many times as its count
+            for (int i = 0; i < kvp.Value; i++)
+            {
+                cardIDs.Add(kvp.Key);
+            }
+        }
+        // Convert to comma-separated string
+        string idString = string.Join(",", cardIDs);
+        // Save to PlayerPrefs
+        PlayerPrefs.SetString("DeckCardIDs", idString);
+        PlayerPrefs.Save();
     }
 
 

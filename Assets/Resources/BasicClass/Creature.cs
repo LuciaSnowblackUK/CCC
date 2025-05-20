@@ -2,6 +2,7 @@
 using UnityEngine;
 using Unity.Mathematics;
 using TMPro;
+using System.Threading.Tasks;
 
 public class Creature : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class Creature : MonoBehaviour
     public GM_Creature GM_Creature;
     public GM_Global GM_Global;
     public GM_Level GM_Level;
+    public Animator Animator;
 
     //---------------------
     public string MyPlan;
@@ -35,6 +37,7 @@ public class Creature : MonoBehaviour
         GM_Creature = GameObject.Find(nameof(GM_Creature)).GetComponent<GM_Creature>();
         GM_Global = GameObject.Find(nameof(GM_Global)).GetComponent<GM_Global>();
         GM_Level = GameObject.Find(nameof(GM_Level)).GetComponent<GM_Level>();
+        Animator = GetComponent<Animator>();
 
         //订阅广播
         if (GM_Creature != null)
@@ -117,10 +120,13 @@ public class Creature : MonoBehaviour
             return false;
     }
 
-    public virtual bool CheckHP()
+    public virtual async Task<bool> CheckHP()
     {
         if (this.HP <= 0)
         {
+            Animator.SetTrigger("Die");
+
+            await Task.Delay(500);
             // 摧毁当前的生物对象
             Destroy(this.gameObject); // 这个会销毁当前物体以及它所有的组件
             return true;
@@ -162,6 +168,8 @@ public class Creature : MonoBehaviour
                 Action5();
                 break;
         }
+
+        Animator.SetTrigger("Attack");
     }
 
     // To pick an action ------------------------------------------------------------------------ 6 action slots, from 0 to 5
