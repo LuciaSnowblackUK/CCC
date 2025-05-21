@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Spitter : Creature
@@ -111,27 +112,29 @@ public class Spitter : Creature
     public override void PickAction()
     {
         // pick the target first Randomly Choose an Enemy, could be itself
+        // 先筛选符合条件的敌人ID，存到列表里
+        List<int> candidateIDs = new List<int>();
+
         foreach (int InGameID in GM_Creature.CreatureList.Keys)
         {
             if (GM_Creature.CreatureList[InGameID].InGameID == 0)
-            {
-                continue;//Skip the Player
-            }
+                continue; // 跳过玩家自己
 
-            if (GM_Creature.CreatureList[InGameID].InGameID != 0)
-            {
-                while (TargetEnemy = null)
-                {
-                    if (Random.value < 0.5f)// 有 50% 概率执行这个分支
-                    {
-                        TargetEnemyInGameID = InGameID;
-                        TargetEnemy = GM_Creature.CreatureList[InGameID];
-                        break;
-                    }
-                }
+            candidateIDs.Add(InGameID);
 
-            }
         }
+
+        // 从符合条件的列表中随机选一个作为目标
+        int TargetEnemyInGameID = -1;
+        Creature TargetEnemy = null;
+
+        if (candidateIDs.Count > 0)
+        {
+            int randomIndex = UnityEngine.Random.Range(0, candidateIDs.Count);
+            TargetEnemyInGameID = candidateIDs[randomIndex];
+            TargetEnemy = GM_Creature.CreatureList[TargetEnemyInGameID];
+        }
+
 
         // Picking Action
         if (!IfIdleLastTurn)

@@ -1,4 +1,5 @@
-﻿using Mono.Cecil;
+﻿using System.Collections.Generic;
+using Mono.Cecil;
 using TMPro;
 using UnityEngine;
 
@@ -87,32 +88,34 @@ public class Zombie_ShieldBoss : Creature
     public override void PickAction()
     {
         // find Horde enemy
+        // 先筛选符合条件的敌人ID，存到列表里
+        List<int> candidateIDs = new List<int>();
+
         foreach (int InGameID in GM_Creature.CreatureList.Keys)
         {
             if (GM_Creature.CreatureList[InGameID].InGameID == 0)
+                continue; // 跳过玩家自己
+
+            if (GM_Creature.CreatureList[InGameID].ArmorType == "H") // 举例条件：ArmorType是“H”
             {
-                continue;//Skip the Player
+                candidateIDs.Add(InGameID);
             }
+        }
 
-            while (TargetEnemy == null)
-            {
-                if (GM_Creature.CreatureList[InGameID].InGameID != 0)
-                {
-                    if (GM_Creature.CreatureList[InGameID].ArmorType == "H")
-                    {
-                        IfHordeExsist = true;
-                        if (Random.value < 0.5f)// 有 50% 概率执行这个分支
-                        {
-                            TargetEnemyInGameID = InGameID;
-                            Creature TargetEnemy = GM_Creature.CreatureList[InGameID];
-                            break;
-                        }
-                    }
+        // 从符合条件的列表中随机选一个作为目标
+        int TargetEnemyInGameID = -1;
+        Creature TargetEnemy = null;
 
-                }
-            }
-
-
+        if (candidateIDs.Count > 0)
+        {
+            IfHordeExsist = true;
+            int randomIndex = UnityEngine.Random.Range(0, candidateIDs.Count);
+            TargetEnemyInGameID = candidateIDs[randomIndex];
+            TargetEnemy = GM_Creature.CreatureList[TargetEnemyInGameID];
+        }
+        else
+        {
+            IfHordeExsist= false;
         }
 
 
@@ -146,6 +149,7 @@ public class Zombie_ShieldBoss : Creature
     {
         ArmorType = "A";
         Debug.Log(Name + " performs [Defend]!");
+        IfFirstTurn = false;
         TargetEnemy = null;
     }
 
