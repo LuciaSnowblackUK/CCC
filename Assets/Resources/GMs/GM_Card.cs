@@ -144,52 +144,41 @@ public class GM_Card : MonoBehaviour
     //Discard: Move a card from Hand to DiscardPile
     public async Task<bool> Discard(GameObject TargetCard, bool IfTrigger)
     {
-
-        //-----------------------
-        if (TargetCard == null) // If TargetCard is null, return false early
-        {
+        if (TargetCard == null)
             return false;
-        }
 
-        // Check if TargetCard has the 'Card' component
         Card cardComponent = TargetCard.GetComponent<Card>();
-        if (cardComponent == null) // If no Card component, return false
+        if (cardComponent == null)
         {
             Debug.Log("No Card component found on the target card!");
             return false;
         }
 
-        if (Hand.Cards.Count == 0) // Check if there are cards in hand to discard
+        // 一确定弃牌，就先移走位置
+        TargetCard.transform.position = new Vector3(0f, 100f, 0f);
+
+        // 移除手牌等引用，避免重复引用
+        Hand.Cards.Remove(TargetCard);
+        Deck.Cards.Remove(TargetCard);
+        DiscardPile.Cards.Remove(TargetCard);
+
+        // 异步触发弃牌事件
+        if (IfTrigger)
         {
-            return false;
+            await cardComponent.WhenDiscard();
         }
 
-        // If a valid TargetCard is provided, proceed with discard
-        if (cardComponent != null)
-        {
-            // Remove the card from Hand
-            Hand.Cards.Remove(TargetCard);
+        // 把卡放入弃牌堆
+        TargetCard.transform.SetParent(DiscardPile.transform, false);
+        DiscardPile.Cards.Insert(0, TargetCard);
 
-            if (IfTrigger)
-            {
-                Debug.Log("AAAAAAA");
+        Hand.ResetOrder();
+        DiscardPile.ResetOrder();
 
-                // 这里如果有涉及到异步的操作，可以将其改为异步
-                await cardComponent.WhenDiscard();  // 异步执行 WhenDiscard
-            }
-
-            // Move the card to the discard pile
-            TargetCard.transform.SetParent(DiscardPile.transform, false); // Move to DiscardPile
-            DiscardPile.Cards.Insert(0, TargetCard); // Add the card to DiscardPile's list
-
-            Hand.ResetOrder();
-            DiscardPile.ResetOrder();
-            Debug.Log("BBBBBB");
-            return true;
-        }
-
-        return false; // If no valid card to discard, return false
+        Debug.Log("Discard complete.");
+        return true;
     }
+
 
 
     //Shuffle: Shuffle Cards from the DiscardPile to the Deck
