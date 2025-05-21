@@ -22,17 +22,22 @@ public class LoadLoadout : MonoBehaviour
     }
 
     public List<int> LoadDeckFromPlayerPrefs(int num)
-{
-    string idString = PlayerPrefs.GetString($"Loadout{num}", "");
-    if (string.IsNullOrEmpty(idString))
-        return new List<int>();
+    {
+        string idString = PlayerPrefs.GetString($"Loadout{num}", "");
+        if (string.IsNullOrEmpty(idString))
+            return new List<int>();
 
-    // Split and parse to int
-    List<int> deck = idString.Split(',').Select(id => int.Parse(id)).ToList();
+        List<int> deck = idString.Split(',').Select(id => int.Parse(id)).ToList();
 
-    // Set the loaded deck in DeckLoader
-    DeckLoader.SetDeck(deck); // Make sure DeckLoader has a SetDeck method
+        DeckLoader.SetDeck(deck);
 
-    return deck;
-}
+        // Refresh all DeckCardAdd instances
+        DeckCardAdd[] allCards = FindObjectsOfType<DeckCardAdd>();
+        foreach (var card in allCards)
+        {
+            card.RefreshCardCount();
+        }
+
+        return deck;
+    }
 }

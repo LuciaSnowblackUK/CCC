@@ -78,4 +78,21 @@ public class DeckCardAdd : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         Detail_Text.text = DeckLoader.Instance.GetDeckListAsText(); //改成显示现有卡组列表
 
     }
+
+    public void RefreshCardCount()
+    {
+        string countStr = DeckLoader.Instance.GetCardCountAsString(CardID); // You need a method like this
+        CardNumber.text = countStr;
+    
+        switch (countStr)
+        {
+            case "0":
+                CardCount.gameObject.SetActive(false);
+                break;
+            case "1":
+            case "2":
+                CardCount.gameObject.SetActive(true);
+                break;
+        }
+    }
 }
