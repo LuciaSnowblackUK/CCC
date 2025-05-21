@@ -88,7 +88,7 @@ public class GM_Global : MonoBehaviour
 
         // 5, The GM_Level to judge and activate level events 敌人在此处被刷新出
         GM_Level.SettleEvents();
-        await Task.Delay(100);// give the new creatures some time to find the refer
+        await Task.Yield(); // 等待下一帧
 
         this.Turn++;
 
@@ -104,7 +104,7 @@ public class GM_Global : MonoBehaviour
         Draws = MaxDraws;
 
         // 3. The enemy choose and show their action for this turn 让敌人选择行为
-        await Task.Delay(100);// give the new creatures some time to find the refer
+        await Task.Yield(); // 等待下一帧
         GM_Creature.AllPickAction();
 
         // 4. Active 'at the begin of a turn' effects if there is any, 1 by 1 (To be Continue)

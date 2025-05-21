@@ -92,24 +92,24 @@ public class Zombie_GunBoss : Creature
     public override void PickAction()
     {
         // find Horde enemy
-        foreach (int InGameID in GM_Creature.UpdateCreature().Keys)
+        foreach (int InGameID in GM_Creature.CreatureList.Keys)
         {
-            if (GM_Creature.UpdateCreature()[InGameID].InGameID == 0)
+            if (GM_Creature.CreatureList[InGameID].InGameID == 0)
             {
                 continue;//Skip the Player
             }
 
             while (TargetEnemy == null)
             {
-                if (GM_Creature.UpdateCreature()[InGameID].InGameID != 0)
+                if (GM_Creature.CreatureList[InGameID].InGameID != 0)
                 {
-                    if (GM_Creature.UpdateCreature()[InGameID].ArmorType == "H")
+                    if (GM_Creature.CreatureList[InGameID].ArmorType == "H")
                     {
                         IfHordeExsist = true;
                         if (Random.value < 0.5f)// 有 50% 概率执行这个分支
                         {
                             TargetEnemyInGameID = InGameID;
-                            Creature TargetEnemy = GM_Creature.UpdateCreature()[InGameID];
+                            Creature TargetEnemy = GM_Creature.CreatureList[InGameID];
                             break;
                         }
                     }

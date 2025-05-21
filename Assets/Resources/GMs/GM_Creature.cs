@@ -11,7 +11,7 @@ public class GM_Creature : MonoBehaviour
     public int NewInGameID = 1; //the new InGameID for newly spawn creature, In-game ID for tracking, since we only have 1 player and max 6 enemy so [0,1,2,3,4,5,6], default 7 means a prefab
 
     //Private Variables
-    private Dictionary<int, Creature> CreatureList = new Dictionary<int, Creature>(); //This is the refer list of the Creatures,<InGameID: Creature >
+    public Dictionary<int, Creature> CreatureList = new Dictionary<int, Creature>(); //This is the refer list of the Creatures,<InGameID: Creature >
 
     //Important Refers
     public GM_Card GM_Card;
@@ -37,8 +37,6 @@ public class GM_Creature : MonoBehaviour
 
     private void Update()
     {
-        UpdateCreature();
-
         foreach (Transform child in transform)
         {
             Creature creature = child.GetComponent<Creature>();
@@ -196,11 +194,11 @@ public class GM_Creature : MonoBehaviour
 
         }
 
-        bool Kill = await TargetCreature.CheckHP();
+        bool Kill = false;
 
         UpdateCreature();
 
-        if (Kill)
+        if (await TargetCreature.CheckHP())
         {
             this.NewInGameID--;
             //TargetInGameID
