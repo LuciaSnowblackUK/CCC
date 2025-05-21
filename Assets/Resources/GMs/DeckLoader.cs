@@ -150,8 +150,11 @@ public string GetDeckListAsText()
         deckCount = DeckList.Values.Sum();
     }
 
-
-
+    public string GetCardCountAsString(int cardID)
+    {
+        int count = DeckList.ContainsKey(cardID) ? DeckList[cardID] : 0;
+        return count.ToString();
+    }
 
 
 }
