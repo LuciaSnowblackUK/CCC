@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
+using System.Linq;
 
 public class Smoke_Trap: Card
 {
@@ -34,7 +35,7 @@ Cancel all enemy movement
 
     public override async Task<bool> WhenShuffle()
     {
-        foreach (int InGameID in GM_Creature.UpdateCreature().Keys)
+        foreach (int InGameID in GM_Creature.UpdateCreature().Keys.ToList())
         {
 
             GM_Creature.UpdateCreature()[InGameID].CurrentStat = 0;
