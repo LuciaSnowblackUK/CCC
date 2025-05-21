@@ -56,7 +56,7 @@ public class Creature : MonoBehaviour
 
     public virtual void Update()
     {
-
+        
 
     }
 
@@ -124,11 +124,15 @@ public class Creature : MonoBehaviour
     {
         if (this.HP <= 0)
         {
-            Animator.SetTrigger("Die");
+            if (Animator != null)
+            {
+                Animator.SetTrigger("Die");
+            }
 
             await Task.Delay(500);
             // 摧毁当前的生物对象
             Destroy(this.gameObject); // 这个会销毁当前物体以及它所有的组件
+
             return true;
         }
 
@@ -169,7 +173,10 @@ public class Creature : MonoBehaviour
                 break;
         }
 
-        Animator.SetTrigger("Attack");
+        if (Animator != null)
+        {
+            Animator.SetTrigger("Attack");
+        }
     }
 
     // To pick an action ------------------------------------------------------------------------ 6 action slots, from 0 to 5
