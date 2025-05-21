@@ -111,21 +111,21 @@ public class Spitter : Creature
     public override void PickAction()
     {
         // pick the target first Randomly Choose an Enemy, could be itself
-        foreach (int InGameID in GM_Creature.UpdateCreature().Keys)
+        foreach (int InGameID in GM_Creature.CreatureList.Keys)
         {
-            if (GM_Creature.UpdateCreature()[InGameID].InGameID == 0)
+            if (GM_Creature.CreatureList[InGameID].InGameID == 0)
             {
                 continue;//Skip the Player
             }
 
-            if (GM_Creature.UpdateCreature()[InGameID].InGameID != 0)
+            if (GM_Creature.CreatureList[InGameID].InGameID != 0)
             {
                 while (TargetEnemy = null)
                 {
                     if (Random.value < 0.5f)// 有 50% 概率执行这个分支
                     {
                         TargetEnemyInGameID = InGameID;
-                        TargetEnemy = GM_Creature.UpdateCreature()[InGameID];
+                        TargetEnemy = GM_Creature.CreatureList[InGameID];
                         break;
                     }
                 }
