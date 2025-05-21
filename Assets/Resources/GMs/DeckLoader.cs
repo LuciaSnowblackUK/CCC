@@ -137,6 +137,19 @@ public string GetDeckListAsText()
         PlayerPrefs.Save();
     }
 
+    public void SetDeck(List<int> cardIDs)
+    {
+        DeckList.Clear();
+        foreach (int id in cardIDs)
+        {
+            if (DeckList.ContainsKey(id))
+                DeckList[id]++;
+            else
+                DeckList[id] = 1;
+        }
+        deckCount = DeckList.Values.Sum();
+    }
+
 
 
 
