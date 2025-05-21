@@ -38,14 +38,29 @@ Discard up to 3 cards from your hand,Deal 20 explosive damage and 10 stun to tar
 
         //Targeting and Discard those card
         GameObject Card1 = await TargetingHelper.WaitForTargetWithComponentAsync<Card>(PlayerState.ChoosingCardOptional, GM_Global);
-        bool K1 = Card1.GetComponent<Card>().Tag.Contains("Ammo");
-        bool C1 = await GM_Card.Discard(Card1, true);
+        bool K1 = false;
+        bool C1 = false;
+        if (Card1 != null)
+        {
+            K1 = Card1.GetComponent<Card>().Tag.Contains("Ammo");
+            C1 = await GM_Card.Discard(Card1, true);
+        }
         GameObject Card2 = await TargetingHelper.WaitForTargetWithComponentAsync<Card>(PlayerState.ChoosingCardOptional, GM_Global);
-        bool K2 = Card2.GetComponent<Card>().Tag.Contains("Ammo");
-        bool C2 = await GM_Card.Discard(Card2, true);
+        bool K2 = false;
+        bool C2 = false;
+        if (Card1 != null)
+        {
+            K2 = Card2.GetComponent<Card>().Tag.Contains("Ammo");
+            C2 = await GM_Card.Discard(Card2, true);
+        }
         GameObject Card3 = await TargetingHelper.WaitForTargetWithComponentAsync<Card>(PlayerState.ChoosingCardOptional, GM_Global);
-        bool K3 = Card3.GetComponent<Card>().Tag.Contains("Ammo");
-        bool C3 = await GM_Card.Discard(Card3, true);
+        bool K3 = false;
+        bool C3 = false;
+        if (Card3 != null)
+        {
+            K3 = Card3.GetComponent<Card>().Tag.Contains("Ammo");
+            C3 = await GM_Card.Discard(Card3, true);
+        }
 
         //
         if (C1)

@@ -44,28 +44,42 @@ for each [Bullet] discard this way, add a [Combo] to your hand
         bool K12 = false;
         if (Card1 != null)
         {
-            K11 = Card1.GetComponent<Card>().ID == 0010;
-            K12 = Card1.GetComponent<Card>().ID == 0042;
+            var cardComp = Card1.GetComponent<Card>();
+            if (cardComp != null)
+            {
+                K11 = cardComp.ID == 10;
+                K12 = cardComp.ID == 42;
+            }
         }
-        bool C1 = await GM_Card.Discard(Card1, true);
+        bool C1 = Card1 != null ? await GM_Card.Discard(Card1, true) : false;
+
         GameObject Card2 = await TargetingHelper.WaitForTargetWithComponentAsync<Card>(PlayerState.ChoosingCardOptional, GM_Global);
         bool K21 = false;
         bool K22 = false;
         if (Card2 != null)
         {
-            K21 = Card2.GetComponent<Card>().ID == 0010;
-            K22 = Card2.GetComponent<Card>().ID == 0042;
+            var cardComp = Card2.GetComponent<Card>();
+            if (cardComp != null)
+            {
+                K21 = cardComp.ID == 10;
+                K22 = cardComp.ID == 42;
+            }
         }
-        bool C2 = await GM_Card.Discard(Card2, true);
+        bool C2 = Card1 != null ? await GM_Card.Discard(Card1, true) : false;
+
         GameObject Card3 = await TargetingHelper.WaitForTargetWithComponentAsync<Card>(PlayerState.ChoosingCardOptional, GM_Global);
         bool K31 = false;
         bool K32 = false;
         if (Card3 != null)
         {
-            K31 = Card3.GetComponent<Card>().ID == 0010;
-            K32 = Card3.GetComponent<Card>().ID == 0042;
+            var cardComp = Card3.GetComponent<Card>();
+            if (cardComp != null)
+            {
+                K31 = cardComp.ID == 10;
+                K32 = cardComp.ID == 42;
+            }
         }
-        bool C3 = await GM_Card.Discard(Card3, true);
+        bool C3 = Card1 != null ? await GM_Card.Discard(Card1, true) : false;
 
         //Heal according to card discarded
         int Cardcount = (C1 ? 1 : 0) + (C2 ? 1 : 0) + (C3 ? 1 : 0);

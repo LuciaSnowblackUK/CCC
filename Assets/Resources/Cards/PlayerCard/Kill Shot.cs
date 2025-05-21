@@ -39,19 +39,22 @@ if at least 1 <Ammo>tag card is discarded, deal 100 Kinetic Damage to target ene
         //Targeting and Discard those card
         GameObject Card1 = await TargetingHelper.WaitForTargetWithComponentAsync<Card>(PlayerState.ChoosingCardOptional, GM_Global);
         bool K1 = false;
+        bool C1 = false;
         if (Card1 != null)
         {
             K1 = Card1.GetComponent<Card>().Tag.Contains("Ammo");
+            C1 = await GM_Card.Discard(Card1, true);
         }
-        bool C1 = await GM_Card.Discard(Card1, true);
 
         GameObject Card2 = await TargetingHelper.WaitForTargetWithComponentAsync<Card>(PlayerState.ChoosingCardOptional, GM_Global);
         bool K2 = false;
+        bool C2 = false;
         if (Card2 != null)
         {
             K2 = Card2.GetComponent<Card>().Tag.Contains("Ammo");
+            C2 = await GM_Card.Discard(Card2, true);
         }
-        bool C2 = await GM_Card.Discard(Card2, true);
+
 
 
 
