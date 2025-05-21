@@ -48,7 +48,7 @@ Discard up to 3 cards from your hand,Deal 20 explosive damage and 10 stun to tar
         GameObject Card2 = await TargetingHelper.WaitForTargetWithComponentAsync<Card>(PlayerState.ChoosingCardOptional, GM_Global);
         bool K2 = false;
         bool C2 = false;
-        if (Card1 != null)
+        if (Card2 != null)
         {
             K2 = Card2.GetComponent<Card>().Tag.Contains("Ammo");
             C2 = await GM_Card.Discard(Card2, true);

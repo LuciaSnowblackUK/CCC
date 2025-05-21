@@ -68,7 +68,7 @@ deal 20 Explosive Damage to each enemy and stun them 10,
         {
             if (GM_Creature.UpdateCreature()[InGameID].InGameID != 0)
             {
-                GM_Creature.Damage(InGameID, "E", 20);
+                await GM_Creature.Damage(InGameID, "E", 20);
                 GM_Creature.Stun(InGameID, 10);
             }
         }

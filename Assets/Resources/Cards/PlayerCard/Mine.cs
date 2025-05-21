@@ -54,7 +54,7 @@ if you have less than 8 cards in your hand: destroy this card
             if (creature.CurrentStat == 1)
             {
                 creature.HP = 0;
-                GM_Creature.Damage(creature.InGameID, "V", 1);
+                await GM_Creature.Damage(creature.InGameID, "V", 1);
             }
         }
 
