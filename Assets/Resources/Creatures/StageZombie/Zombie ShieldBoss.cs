@@ -27,9 +27,9 @@ public class Zombie_ShieldBoss : Creature
 
 
     // 事件处理方法（你可以在这里处理事件触发时的逻辑）
-    public override void HandleTargetCheck()
+    public override void HandleTargetCheck(int dyingID)
     {
-        if (TargetEnemy == null)
+        if (TargetEnemyInGameID == dyingID)
         {
             CurrentAction = 0;
             CurrentStat = 0;

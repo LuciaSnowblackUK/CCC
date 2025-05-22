@@ -1279,8 +1279,8 @@ GameObject:
   - component: {fileID: 7523139831651327523}
   - component: {fileID: 2574473732892623394}
   - component: {fileID: 1760508746307672584}
-  - component: {fileID: 9086538202113372457}
   - component: {fileID: 4815091285833979147}
+  - component: {fileID: 6566455290691745581}
   m_Layer: 0
   m_Name: Spitter
   m_TagString: Untagged
@@ -1361,24 +1361,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &9086538202113372457
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8966606778381368795}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27359ceb930e881459bbb4eb9807bced, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GM_Card: {fileID: 0}
-  GM_Creature: {fileID: 0}
-  GM_Global: {fileID: 0}
-  GM_Level: {fileID: 0}
-  Animator: {fileID: 0}
-  MyPlan: 
 --- !u!95 &4815091285833979147
 Animator:
   serializedVersion: 7
@@ -1401,6 +1383,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6566455290691745581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8966606778381368795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ebad418502bca74f87e3d34779b4e68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GM_Card: {fileID: 0}
+  GM_Creature: {fileID: 0}
+  GM_Global: {fileID: 0}
+  GM_Level: {fileID: 0}
+  Animator: {fileID: 0}
+  MyPlan: 
 --- !u!1 &9170334358661680672
 GameObject:
   m_ObjectHideFlags: 0

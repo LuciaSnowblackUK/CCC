@@ -65,7 +65,7 @@ for each [Bullet] discard this way, add a [Combo] to your hand
                 K22 = cardComp.ID == 42;
             }
         }
-        bool C2 = Card2 != null ? await GM_Card.Discard(Card1, true) : false;
+        bool C2 = Card2 != null ? await GM_Card.Discard(Card2, true) : false;
 
         GameObject Card3 = await TargetingHelper.WaitForTargetWithComponentAsync<Card>(PlayerState.ChoosingCardOptional, GM_Global);
         bool K31 = false;
@@ -79,7 +79,7 @@ for each [Bullet] discard this way, add a [Combo] to your hand
                 K32 = cardComp.ID == 42;
             }
         }
-        bool C3 = Card3 != null ? await GM_Card.Discard(Card1, true) : false;
+        bool C3 = Card3 != null ? await GM_Card.Discard(Card3, true) : false;
 
         //Heal according to card discarded
         int Cardcount = (C1 ? 1 : 0) + (C2 ? 1 : 0) + (C3 ? 1 : 0);

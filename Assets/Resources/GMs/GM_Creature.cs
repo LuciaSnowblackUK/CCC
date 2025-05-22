@@ -21,7 +21,9 @@ public class GM_Creature : MonoBehaviour
 
     //SomeImportant Boardcast and its event
     // 1. 定义委托
-    public delegate void TargetCheckHandler(); public event TargetCheckHandler OnTargetCheck;
+    public delegate void TargetCheckHandler(int dyingID);
+    public event TargetCheckHandler OnTargetCheck;
+
 
     void Start()
     {
@@ -156,11 +158,11 @@ public class GM_Creature : MonoBehaviour
                         break;
 
                     case "S":
-                        TargetCreature.HP -= DamageAmount * 5;
+                        TargetCreature.HP -= DamageAmount * 2;
                         break;
 
                     case "B":
-                        TargetCreature.HP -= DamageAmount * 2;
+                        TargetCreature.HP -= DamageAmount * 5;
                         break;
 
                     case "A":
@@ -198,8 +200,10 @@ public class GM_Creature : MonoBehaviour
 
         UpdateCreature();
 
-        if (await TargetCreature.CheckHP())
+        if (TargetCreature.HP<=0)
         {
+            OnTargetCheck?.Invoke(TargetCreature.InGameID);
+            await TargetCreature.CheckHP();
             this.NewInGameID--;
             //TargetInGameID
             foreach (int InGameID in CreatureList.Keys)
@@ -211,7 +215,8 @@ public class GM_Creature : MonoBehaviour
             }
 
             // 广播“检测目标”事件
-            OnTargetCheck?.Invoke();
+
+            Kill = true;
         }
 
         UpdateCreature();

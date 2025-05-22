@@ -18,7 +18,7 @@ Draw 2 cards,
 Shuffle your discard pile into your deck.
 
 When Discard:
-Heal yourself for 50 and change your Armor type to Armored [A]
+Heal yourself for 20 and change your Armor type to Armored [A]
 this turn
 
 <Tag:Action>";
@@ -74,7 +74,7 @@ this turn
     public override async Task<bool> WhenDiscard()
     {
         //Heal yourself for 50 and change your Armor type to Armored this turn
-        GM_Creature.Heal(0, 50);
+        GM_Creature.Heal(0, 20);
         GM_Creature.Type(0, "A");
 
         return false;

@@ -73,26 +73,35 @@ public class Whiners : Creature
 
     public override void PickAction()
     {
+
+
+        int[] opts = { 1, 2, 3 };
+        float[] ws = { 0.2f, 0.3f, 0.5f };
+
+        for (int i = 0; i < 10; i++)
+        {
+            int result = WeightedRandom(opts, ws);
+            Debug.Log($"Test {i}: Picked {result}");
+        }
+
         // Picking Action
         if (HP > 200 && GM_Creature.NewInGameID <= 6)
         {
             int[] options = { 1, 4 };
-            float[] weights = { 0.7f, 0.3f }; // 权重为 70%, 30%
+            float[] weights = { 0.7f, 0.3f };
             CurrentAction = WeightedRandom(options, weights);
         }
-
-        if (HP > 200 && GM_Creature.NewInGameID > 6)
+        else if (HP > 200 && GM_Creature.NewInGameID > 6)
         {
             CurrentAction = 2;
         }
-
-        if (HP <= 200)
+        else if (HP <= 200)
         {
-            int[] options = { 2, 3, 5};
-            float[] weights = { 0.2f, 0.4f, 0.4f}; 
+            int[] options = { 2, 3, 5 };
+            float[] weights = { 0.2f, 0.4f, 0.4f };
             CurrentAction = WeightedRandom(options, weights);
         }
-
+        Debug.Log("Random seed test: " + UnityEngine.Random.Range(0, 10000));
         Debug.Log(Name + " picks action " + CurrentAction);
     }
 

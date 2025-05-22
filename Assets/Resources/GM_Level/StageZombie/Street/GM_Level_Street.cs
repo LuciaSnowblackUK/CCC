@@ -312,10 +312,6 @@ public class GM_Level_Street : GM_Level
             GM_Creature.Spawn(400, 001, "StageZombie");
         }
 
-        if (GM_Creature.NewInGameID < 6)
-        {
-            GM_Creature.Spawn(400, 001, "StageZombie");
-        }
     }
 
     public void EasyWave2()

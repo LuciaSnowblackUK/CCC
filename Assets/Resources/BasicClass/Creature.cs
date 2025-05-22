@@ -62,7 +62,7 @@ public class Creature : MonoBehaviour
 
 
     // 事件处理方法（你可以在这里处理事件触发时的逻辑）
-    public virtual void HandleTargetCheck()
+    public virtual void HandleTargetCheck(int dyingID)
     {
         // 在这里实现你想要的逻辑
         Debug.Log("Target check triggered in Creature!");
@@ -80,33 +80,26 @@ public class Creature : MonoBehaviour
 
     // 使用 Unity.Mathematics.Random 进行加权随机选择
     // 加权随机方法，直接调用即可
+    public static Unity.Mathematics.Random random = new Unity.Mathematics.Random((uint)System.DateTime.Now.Ticks);
+
     public static int WeightedRandom(int[] options, float[] weights)
     {
-        Unity.Mathematics.Random random = new Unity.Mathematics.Random((uint)System.DateTime.Now.Millisecond);
-
-        // 计算总权重
         float totalWeight = 0f;
-        foreach (float weight in weights)
-        {
-            totalWeight += weight;
-        }
+        foreach (float w in weights) totalWeight += w;
 
-        // 生成一个介于 0 和总权重之间的随机数
         float randomValue = random.NextFloat(0f, totalWeight);
 
-        // 根据随机数选取一个选项
         float cumulativeWeight = 0f;
         for (int i = 0; i < options.Length; i++)
         {
             cumulativeWeight += weights[i];
             if (randomValue <= cumulativeWeight)
-            {
                 return options[i];
-            }
         }
 
-        return options[options.Length - 1]; // 如果没有选中，返回最后一个选项
+        return options[options.Length - 1];
     }
+
 
     public virtual bool CheckStun()
     {

@@ -41,8 +41,12 @@ public class Skip_Button : MonoBehaviour
 
     private void Update()
     {
-        bool shouldBeVisible = GM_Global.CurrentPlayerState == PlayerState.ChoosingEnemy ||
-                               GM_Global.CurrentPlayerState == PlayerState.ChoosingCardOptional;
+        bool shouldBeVisible =
+            GM_Global.CurrentPlayerState == PlayerState.ChoosingEnemy ||
+            GM_Global.CurrentPlayerState == PlayerState.ChoosingCardOptional ||
+            (GM_Global.CurrentPlayerState == PlayerState.ChoosingCard && GM_Card.Hand.transform.childCount <= 0);
+
+
 
         if (button != null) button.interactable = shouldBeVisible;
         if (image != null) image.enabled = shouldBeVisible;

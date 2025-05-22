@@ -14817,7 +14817,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "You gain 2 Draws, \r\nDraw 2 cards,\r\nShuffle your discard pile into
-    your deck.\r\n\r\nWhen Discard:\r\nHeal yourself for 50 and change your Armor
+    your deck.\r\n\r\nWhen Discard:\r\nHeal yourself for 20 and change your Armor
     type to Armored [A] this turn\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -17828,7 +17828,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Deal 100 ion damage and 100 stun to target enemy
+  m_text: 'Deal 20 ion damage and 100 stun to target enemy
 
 
     Discard all your

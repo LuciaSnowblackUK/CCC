@@ -145,7 +145,7 @@ add 2 [Combo] card into your hand
     {
         //add 2[Combo] card into your hand
         await GM_Card.Add(0042, "PlayerCard", "Hand", false);
-
+        await GM_Card.Add(0042, "PlayerCard", "Hand", false);
         return false;
     }
 
