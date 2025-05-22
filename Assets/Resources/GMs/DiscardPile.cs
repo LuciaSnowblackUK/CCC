@@ -23,32 +23,6 @@ public class DiscardPile : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         return Cards;
     }
 
-    //Method:ResetOrder
-    public void ResetOrder()
-    {
-        // Step 1: 先移除所有已经被销毁的卡
-        Cards.RemoveAll(card => card == null || card.Equals(null));
-
-        // Step 2: 按照剩下的 Cards 顺序调整 Hierarchy
-        for (int i = 0; i < Cards.Count; i++)
-        {
-            if (Cards[i] != null && !Cards[i].Equals(null)) // 安全检查
-            {
-                Cards[i].transform.SetSiblingIndex(i);
-            }
-        }
-
-        // Step 3: 重建 Cards 列表（保持和 Hierarchy 同步）
-        Cards.Clear();
-        foreach (Transform child in transform)
-        {
-            Cards.Add(child.gameObject);
-        }
-    }
-
-
-
-
     public Vector2 targetPosition = new Vector2(-150, -150);
 
     void FixedUpdate()

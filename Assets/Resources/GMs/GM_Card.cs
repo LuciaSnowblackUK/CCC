@@ -87,8 +87,6 @@ public class GM_Card : MonoBehaviour
             Debug.Log($"Card drawn: {TargetCard.name}, Deck count after draw: {Deck.Cards.Count}");
 
             // 重置排序
-            Deck.ResetOrder();
-            Hand.ResetOrder();
         }
 
         return true;
@@ -172,9 +170,6 @@ public class GM_Card : MonoBehaviour
         TargetCard.transform.SetParent(DiscardPile.transform, false);
         DiscardPile.Cards.Insert(0, TargetCard);
 
-        Hand.ResetOrder();
-        DiscardPile.ResetOrder();
-
         Debug.Log("Discard complete.");
         return true;
     }
@@ -218,7 +213,6 @@ public class GM_Card : MonoBehaviour
         }
 
 
-        Deck.ResetOrder();
         Deck.UpdateCards();
         DiscardPile.Cards.Clear();
         return true;
@@ -248,13 +242,11 @@ public class GM_Card : MonoBehaviour
                         {
                             GameObject instance = Instantiate(prefab, Deck.transform);
                             Deck.Cards.Insert(0, instance);
-                            Deck.ResetOrder();
                         }
                         else
                         {
                             GameObject instance = Instantiate(prefab, Deck.transform);
                             Deck.Cards.Add(instance);
-                            Deck.ResetOrder();
                         }
                             ;
                         break;
@@ -272,13 +264,11 @@ public class GM_Card : MonoBehaviour
                         {
                             GameObject instance = Instantiate(prefab, Hand.transform);
                             Hand.Cards.Insert(0, instance);
-                            Hand.ResetOrder();
                         }
                         else
                         {
                             GameObject instance = Instantiate(prefab, Hand.transform);
                             Hand.Cards.Add(instance);
-                            Hand.ResetOrder();
                         }
                             ;
                         break;
@@ -289,13 +279,11 @@ public class GM_Card : MonoBehaviour
                         {
                             GameObject instance = Instantiate(prefab, DiscardPile.transform);
                             DiscardPile.Cards.Insert(0, instance);
-                            DiscardPile.ResetOrder();
                         }
                         else
                         {
                             GameObject instance = Instantiate(prefab, DiscardPile.transform);
                             DiscardPile.Cards.Add(instance);
-                            DiscardPile.ResetOrder();
                         }
                             ;
                         break;
@@ -401,7 +389,6 @@ public List<GameObject> ReturnDeckCard()
             }
         }
 
-        Deck.ResetOrder();
         Deck.UpdateCards();
     }
 }
