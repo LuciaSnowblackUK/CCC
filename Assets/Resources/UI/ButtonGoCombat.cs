@@ -3,7 +3,6 @@ using UnityEngine;
 using static GM_Global;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
 
 public class ButtonGoCombat : MonoBehaviour
@@ -13,17 +12,24 @@ public class ButtonGoCombat : MonoBehaviour
 
     private void Awake()
     {
-        // 获取按钮组件并添加点击事件监听
         Button button = GetComponent<Button>();
         button.onClick.AddListener(OnButtonClick);
         DeckLoader = GameObject.Find("DeckLoader").GetComponent<DeckLoader>();
     }
+
     public void OnButtonClick()
     {
         if (DeckLoader.Instance.deckCount == 12)
         {
-            DeckLoader.SaveDeckToPlayerPrefs();
-            SceneManager.LoadScene(LevelName);
+            DeckLoader.ShuffleDeck();                   // Shuffle first
+            DeckLoader.SaveDeckToPlayerPrefs();         // Then save the shuffled version
+            StartCoroutine(LoadSceneWithDelay());       // Load scene after a short delay
         }
+    }
+
+    private System.Collections.IEnumerator LoadSceneWithDelay()
+    {
+        yield return new WaitForEndOfFrame();           // Let Unity update data
+        SceneManager.LoadScene(LevelName);
     }
 }

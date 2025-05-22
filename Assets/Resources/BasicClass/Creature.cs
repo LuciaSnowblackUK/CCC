@@ -167,7 +167,7 @@ public class Creature : MonoBehaviour
                 break;
         }
 
-        if (Animator != null)
+        if (Animator != null && Stun < MaxStun)
         {
             Animator.SetTrigger("Attack");
         }
