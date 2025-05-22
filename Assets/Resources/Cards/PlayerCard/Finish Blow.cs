@@ -16,7 +16,7 @@ public class Finish_Blow : Card
     public override string CardDiscription { get; set; } =
 @"<Finish Blow>
 
-Deal 100 ion damage and 100 stun to target enemy
+Deal 20 ion damage and 100 stun to target enemy
 
 Discard all your hand
 
@@ -56,7 +56,7 @@ if this card kill an enemy, you get 1 Max Draws if your Max Draw is lower than 6
                 int TargetInGameID = TargetCreature.InGameID;
 
                 // 对目标造成100的i伤害并使其Stun100
-                Kill = await GM_Creature.Damage(TargetInGameID, "I", 100);
+                Kill = await GM_Creature.Damage(TargetInGameID, "I", 20);
                 GM_Creature.Stun(TargetInGameID, 100);
             }
         }
