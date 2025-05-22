@@ -46,6 +46,7 @@ destroy this card
     public override async Task<bool> WhenDiscard()
     {
         GM_Creature.Heal(0, 5);
+        GM_Card.ReturnDeckCard().Remove(this.gameObject);
         Destroy(this.gameObject);
         return false;
     }

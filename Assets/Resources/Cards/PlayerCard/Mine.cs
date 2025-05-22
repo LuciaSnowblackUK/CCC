@@ -51,6 +51,7 @@ if you have less than 8 cards in your hand: destroy this card
         // 遍历这些 Creature 对象
         foreach (var creature in selectedCreatures)
         {
+            if (creature == null || creature.gameObject == null) continue;
             if (creature.CurrentStat == 1)
             {
                 creature.HP = 0;
@@ -61,6 +62,8 @@ if you have less than 8 cards in your hand: destroy this card
 
         if (GM_Card.ReturnHandCard().Count < 8 )
         {
+            GM_Card.ReturnDeckCard().Remove(this.gameObject);
+            ;
             Destroy(this.gameObject);
             GM_Card.ReturnDeckCard();
         }

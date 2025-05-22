@@ -92,6 +92,7 @@ destroy this card
             Debug.Log("没有选择有效目标。");
         }
 
+        GM_Card.ReturnDeckCard().Remove(this.gameObject);
         Destroy(this.gameObject);
         GM_Global.CurrentPlayerState = PlayerState.PlayingCard;
         return false;

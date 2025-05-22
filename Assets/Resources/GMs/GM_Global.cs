@@ -83,6 +83,7 @@ public class GM_Global : MonoBehaviour
         // 3, Settle the buff/debuff effects 1 by 1 (To be Continue)
 
         // 4, All enemy reset armor type to default type, then enemy perform their actions 1 by 1, from far to close
+        GM_Creature.UpdateCreature();   
         GM_Creature.AllResetArmorType(false);
         GM_Creature.AllDoAction();
 
@@ -104,6 +105,7 @@ public class GM_Global : MonoBehaviour
         Draws = MaxDraws;
 
         // 3. The enemy choose and show their action for this turn 让敌人选择行为
+        GM_Creature.UpdateCreature();
         await Task.Yield(); // 等待下一帧
         GM_Creature.AllPickAction();
 

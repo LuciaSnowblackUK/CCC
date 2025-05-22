@@ -102,6 +102,7 @@ public class GM_Creature : MonoBehaviour
         Creature TargetCreature = CreatureList[TargetInGameID];
         if (TargetCreature == null) return false;
 
+
         switch (DamageType)
         {
             // The Kinetic Damage

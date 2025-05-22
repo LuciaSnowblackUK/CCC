@@ -115,6 +115,7 @@ public class Creature : MonoBehaviour
 
     public virtual async Task<bool> CheckHP()
     {
+        if (this == null)return false;
         if (this.HP <= 0)
         {
             if (Animator != null)
@@ -124,7 +125,7 @@ public class Creature : MonoBehaviour
 
             await Task.Delay(500);
             // 摧毁当前的生物对象
-            Destroy(this.gameObject); // 这个会销毁当前物体以及它所有的组件
+            if (this != null && this.gameObject != null) Destroy(this.gameObject); // 这个会销毁当前物体以及它所有的组件
 
             return true;
         }
