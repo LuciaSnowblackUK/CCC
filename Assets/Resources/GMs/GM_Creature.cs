@@ -221,6 +221,7 @@ public class GM_Creature : MonoBehaviour
         }
 
         UpdateCreature();
+        await Task.Yield(); // 确保任何等待销毁的物体都完成了处理
         return Kill;
 
     }
